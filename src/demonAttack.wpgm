@@ -1,0 +1,53 @@
+import wollok.game.*
+
+
+object nave1 {
+  var property position = game.origin()
+  method image() = "nave1.png"
+  method moverseHaciaIzquierda(){
+  		self.position().forEach( {=>self.position().left(1)})
+		//self.position(position.left(1))
+	}
+  method moverseHaciaDerecha(){
+		self.position(position.right(1))
+	}
+	
+method disparar(){
+	const miPos = self.position().up(1).right(1)
+    game.addVisual(bala) bala.position(miPos) game.onTick(25, "Disparo",{bala.subir()})
+  }
+}
+
+object bala {
+  var property position 
+  
+  method position(nuevaPosicion){
+  	position=nuevaPosicion
+  }
+  method image() = "bala.png"
+  
+  
+  method subir() {
+  	if (self.position().y()<game.height()){
+    position = position.up(1)}
+    else{
+    	game.removeTickEvent("Disparo")
+    	game.removeVisual(self)	
+    }
+  }
+  
+}
+
+program inciar {
+  game.width(50)
+  game.height(40)
+  game.cellSize(20)
+  game.title("Demon Attack")
+  game.boardGround("fondo.png")
+  game.addVisual(nave1)
+  keyboard.d().onPressDo({nave1.moverseHaciaDerecha()})
+  keyboard.a().onPressDo({nave1.moverseHaciaIzquierda()})
+  keyboard.space().onPressDo{nave1.disparar()}
+  game.start()
+}
+
