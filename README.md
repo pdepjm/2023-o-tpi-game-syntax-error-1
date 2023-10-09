@@ -1,10 +1,11 @@
-# Nombre del juego (<- borrar y completar)
+# Demon Attack
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Coiman, Fernando Agustin
+- Del Rizzo, Valentín
+- Giachetta, Franco 
+- Yañez Romero, Diego 
 
 ## Capturas
 
