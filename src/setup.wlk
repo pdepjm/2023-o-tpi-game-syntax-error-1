@@ -4,7 +4,6 @@ import bala.*
 import enemigo.*
 
 object setup {
-
 	method setup_board() {
 		game.width(50)
 		game.height(40)
