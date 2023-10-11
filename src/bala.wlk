@@ -1,11 +1,11 @@
 import wollok.game.*
 
-//class Bala {
-// var property position
-// method position(nuevaPosicion) {
-// position = nuevaPosicion
-// }
-// method image() = "bala.png"
+object bala {
+  var property position
+  method position(nuevaPosicion) {
+  position = nuevaPosicion
+  }
+  method image() = "bala.png"
 // method subir() {
 // if (self.position().y() < game.height()) {
 // position = position.up(1)
@@ -14,4 +14,4 @@ import wollok.game.*
 // game.removeVisual(self)
 // }
 // }
-//}
+ }
