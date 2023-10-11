@@ -1,6 +1,7 @@
 import wollok.game.*
 import nave.*
 import bala.*
+import enemigo.*
 
 object setup {
 
@@ -19,6 +20,8 @@ object setup {
 	}
 
 	method setup_enemy() {
+		game.addVisual(enemigo)
+		
 	}
 
 }

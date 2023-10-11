@@ -2,6 +2,7 @@ import wollok.game.*
 import setup.*
 import nave.*
 import bala.*
+import enemigo.*
 
 program iniciar {
 	setup.setup_board()
