@@ -1,10 +1,17 @@
 import wollok.game.*
 import bala.*
 
+<<<<<<< HEAD
 class enemigo {
 	
 	var property energia
+=======
+class Enemigo {
+
+	// var property energia
+>>>>>>> branch 'master' of https://github.com/pdepjm/2023-o-tpi-game-syntax-error-1.git
 	var property vidas = 3
+<<<<<<< HEAD
 	var posX = 0.upTo()
 	var posY = 30
 	
@@ -20,27 +27,50 @@ class enemigo {
 	
 	
 	method perderVida (){
-		vidas = vidas - 1
-		if (vidas==0){self.morir()}	
+=======
+	var property position
+	const color = [ "verde", "amarillo", "rojo" ]
+
+	// method energia() = energia
+	// method energia(nuevaEnergia) {
+	// energia = nuevaEnergia
+	// }
+	method vidas(nuevoValor) {
+		vidas = nuevoValor
 	}
+
+	method image() = "nave1.png"
+
+	method perderVida() {
+>>>>>>> branch 'master' of https://github.com/pdepjm/2023-o-tpi-game-syntax-error-1.git
+		vidas = vidas - 1
+		if (vidas == 0) {
+			self.morir()
+		}
+	}
+<<<<<<< HEAD
 	
 	method perderEnergia(){
 
+=======
+
+	method perderEnergia() {
+>>>>>>> branch 'master' of https://github.com/pdepjm/2023-o-tpi-game-syntax-error-1.git
 	}
-	method inicializar(){	
-	}
+
 	method moverse() {
 	}
-	method disparar(){
+
+	method disparar() {
 	}
-	method morir(){
+
+	method morir() {
 		game.removeVisual(self)
-        
 	}
-	
-	
+
 }
 
+<<<<<<< HEAD
 class Enemy {
 	const property image
 	const posicionInicial
@@ -73,3 +103,5 @@ class Enemy {
 	(0 .. largo).forEach { n => arbustoFactory.draw(new ArbustoDerecha(), new Position(x=ancho, y=n)) } // bordeDer
  */ 
 		
+=======
+>>>>>>> branch 'master' of https://github.com/pdepjm/2023-o-tpi-game-syntax-error-1.git

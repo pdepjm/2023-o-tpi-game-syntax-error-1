@@ -7,5 +7,6 @@ import enemigo.*
 program demon {
 	setup.setup_board()
 	setup.setup_player()
+	setup.setup_enemy()
 	game.start()
 }

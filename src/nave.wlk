@@ -2,7 +2,7 @@ import wollok.game.*
 
 object nave {
 
-	var property position = game.origin()
+	var property position = game.at(game.width()/2,0)
 
 	method image() = "nave1.png"
 
