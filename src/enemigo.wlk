@@ -34,7 +34,6 @@ class Enemigo {
 	}
 
 	method moverse() {
-		const posicionLimite = game.at(game.width(),game.height())
 		const direccion = [
 			position.up(1),
 			position.down(1),
@@ -54,12 +53,13 @@ class Enemigo {
 	method seguir_jugador() {
 		var distanciaX = position.x - nave.position().x
 		
-		return if(distanciaX < 2) {
+		if(distanciaX < 2) {
 			var xDir = position.x - nave.position().x
 			var yDir = position.y - nave.position().y
+			var modulo = (xDir**2 + yDir**2).squereRoot()
 			
-			self.position(game.at(xDir,yDir)
-		}else {}
+			self.position(game.at(xDir/modulo, yDir/modulo)
+		}
 	}
 	
 	method evitar_limites() {
