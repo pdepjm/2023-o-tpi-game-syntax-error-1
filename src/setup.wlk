@@ -29,6 +29,9 @@ object setup {
 		game.onTick(500, "mover_enemigo",{
 			listaEnemigos.forEach({enemigo => enemigo.moverse()})	
 		})
+		game.onTick(250, "animar_enemigo", {
+
+		})
 	}
 	
 	// devuelve una posicion random dentro de los límites establecidos

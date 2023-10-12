@@ -1,13 +1,22 @@
 import wollok.game.*
 import bala.*
 import nave.*
+import animador.*
 	
 class Enemigo {
-
 	var property energia
 	var property vidas = 3
+	const animador = new Animador(imagenes = [
+		"dragonrojo/DRAGON-13.png",
+		"dragonrojo/DRAGON-15.png",
+		"dragonrojo/DRAGON-16.png",
+		"dragonrojo/DRAGON-17.png",
+		"dragonrojo/DRAGON-18.png",
+		"dragonrojo/DRAGON-14.png"
+	])
 
 	var property position
+	var property image = "dragonrojo/DRAGON-13.png"
 
 	const color = ["verde","amarillo","rojo"]
 	
@@ -19,8 +28,6 @@ class Enemigo {
 		
 	method perderEnergia (){}
 
-	method image() = "nave1.png"
-
 	method perderVida() {
 		vidas = vidas - 1
 		if (vidas == 0) {
@@ -29,7 +36,7 @@ class Enemigo {
 	}
 
 	method moverse() {
-		var dirX = nave.position().x() - self.position().x()
+		const dirX = nave.position().x() - self.position().x()
 		const dirY = nave.position().y() - self.position().y()
 		const direccion = [
 			position.up(1),
@@ -71,6 +78,10 @@ class Enemigo {
 			if(self.position().x() == 3) self.position(position.right(1))
 			if(self.position().y() == (game.height() - 3)) self.position(position.down(1))
 		}
+	}
+	
+	method animar() {
+		animador.animar(self)
 	}
 	
 	method disparar() {}

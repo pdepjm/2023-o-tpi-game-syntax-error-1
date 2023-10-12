@@ -4,7 +4,7 @@ import nave.*
 import bala.*
 import enemigo.*
 
-program demon {
+program demonAttack {
 	setup.setup_board()
 	setup.setup_player()
 	setup.setup_enemy()
