@@ -21,8 +21,8 @@ object setup {
 	}
 
 	method setup_enemy() {
-		game.onTick(5000, "invocar_enemigo", {
-			var enemigo = new Enemigo(position=self.randomPos(0.1,0.90,0.80,0.45),energia=0)
+		game.onTick(10000, "invocar_enemigo", {
+			const enemigo = new Enemigo(position=self.randomPos(0.1,0.90,0.60,0.45),energia=0)
 			game.addVisual(enemigo)
 			listaEnemigos.add(enemigo)
 		})
@@ -33,8 +33,8 @@ object setup {
 	
 	// devuelve una posicion random dentro de los límites establecidos
 	method randomPos(limStartX, limEndX, limStartY, limEndY) {
-		const randXpos = (game.width()*limStartX).randomUpTo(game.width()*limEndX) 
-		const randYpos = (game.height()*limStartY).randomUpTo(game.height()*limEndY)
+		const randXpos = (game.width() * limStartX).randomUpTo(game.width() * limEndX) 
+		const randYpos = (game.height() * limStartY).randomUpTo(game.height() * limEndY)
 		
 		return game.at(randXpos,randYpos)
 	}
