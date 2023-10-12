@@ -7,8 +7,8 @@ object nave {
 	method image() = "nave1.png"
 
 	method moverse() {
-		keyboard.a().onPressDo({ self.position(position.left(1))})
-		keyboard.d().onPressDo({ self.position(position.right(1))})
+		keyboard.a().onPressDo({self.position(position.left(1))})
+		keyboard.d().onPressDo({self.position(position.right(1))})
 	}
 
 // method disparar() {

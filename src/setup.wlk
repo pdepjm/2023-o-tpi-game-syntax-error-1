@@ -4,10 +4,12 @@ import bala.*
 import enemigo.*
 
 object setup {
+	const listaEnemigos = []
+	
 	method setup_board() {
-		game.width(50)
-		game.height(40)
-		game.cellSize(20)
+		game.width(85)
+		game.height(85)
+		game.cellSize(10)
 		game.title("Demon Attack")
 		game.boardGround("fondo.png")
 	}
@@ -20,7 +22,12 @@ object setup {
 
 	method setup_enemy() {
 		game.onTick(5000, "invocar_enemigo", {
-			game.addVisual(new Enemigo(position=self.randomPos(0.1,0.90,0.80,0.45)))
+			var enemigo = new Enemigo(position=self.randomPos(0.1,0.90,0.80,0.45),energia=0)
+			game.addVisual(enemigo)
+			listaEnemigos.add(enemigo)
+		})
+		game.onTick(500, "mover_enemigo",{
+			listaEnemigos.forEach({enemigo => enemigo.moverse()})	
 		})
 	}
 	
