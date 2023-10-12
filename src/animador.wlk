@@ -8,11 +8,14 @@ class Animador {
 	}
 	
 	method siguiente() {
-		if(index == imagenes.size()){
+		try {
+			return imagenes.get(index) 	
+		}
+		catch error {
 			index = 0
 			return imagenes.get(index)
-		}else {
-			return imagenes.get(index) 
-		}
+		}		
 	}
+	
+	method imagenInicial() = imagenes.get(0) 
 }

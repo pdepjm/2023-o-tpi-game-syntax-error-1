@@ -16,7 +16,7 @@ class Enemigo {
 	])
 
 	var property position
-	var property image = "dragonrojo/DRAGON-13.png"
+	var property image = animador.imagenInicial()
 
 	const color = ["verde","amarillo","rojo"]
 	

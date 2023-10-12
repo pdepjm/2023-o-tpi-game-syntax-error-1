@@ -29,8 +29,8 @@ object setup {
 		game.onTick(500, "mover_enemigo",{
 			listaEnemigos.forEach({enemigo => enemigo.moverse()})	
 		})
-		game.onTick(250, "animar_enemigo", {
-
+		game.onTick(350, "animar_enemigo", {
+			listaEnemigos.forEach({enemigo => enemigo.animar()})
 		})
 	}
 	
