@@ -10,13 +10,12 @@ class Enemigo {
 		"dragonrojo/DRAGON-13.png",
 		"dragonrojo/DRAGON-15.png",
 		"dragonrojo/DRAGON-16.png",
-		"dragonrojo/DRAGON-17.png",
 		"dragonrojo/DRAGON-18.png",
 		"dragonrojo/DRAGON-14.png"
 	])
 
 	var property position
-	var property image = animador.imagenInicial()
+	var property image = "dragonrojo/DRAGON-13.png"
 
 	const color = ["verde","amarillo","rojo"]
 	
@@ -25,6 +24,8 @@ class Enemigo {
 	
 	method vidas() = vidas
 	method vidas(nuevoValor){vidas = nuevoValor}
+	
+	method animador() = animador
 		
 	method perderEnergia (){}
 
@@ -49,7 +50,7 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 		
-		if(dirX.abs() <= 5) {
+		if(dirX.abs() <= 10) {
 			self.seguir_jugador(dirX,dirY)
 		}else {
 			self.position(direccion.anyOne())
@@ -66,7 +67,7 @@ class Enemigo {
 			self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 		}
 		else {
-			self.position(game.at(self.position().x() + dirX/modulo, self.position().y()))
+			self.position(game.at(self.position().x() + (dirX/modulo)*2, self.position().y()))
 		}
 	}
 	
@@ -79,17 +80,18 @@ class Enemigo {
 			if(self.position().y() == (game.height() - 3)) self.position(position.down(1))
 		}
 	}
-	
-	method animar() {
-		animador.animar(self)
-	}
-	
-	method disparar() {}
 
 	method morir() {
-		game.removeVisual(self)
+		animador.imagenes([
+			"nubeverde/NUBEVERDE.png",
+			"nubeverde/NUBEVERDE-02.png",
+			"nubeverde/NUBEVERDE-03.png",
+			"nubeverde/NUBEVERDE-04.png",
+			"nubeverde/NUBEVERDE-05.png",
+			"nubeverde/NUBEVERDE-06.png"
+		])
+		animador.animarYRemover(self)
 	}
-
 }
 
 
