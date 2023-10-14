@@ -6,14 +6,15 @@ import animador.*
 class Enemigo {
 	var property energia
 	var property vidas = 3
-	const animador = new Animador(imagenes = [
-		"dragonrojo/DRAGON-13.png",
-		"dragonrojo/DRAGON-15.png",
-		"dragonrojo/DRAGON-16.png",
-		"dragonrojo/DRAGON-17.png",
-		"dragonrojo/DRAGON-18.png",
-		"dragonrojo/DRAGON-14.png"
-	])
+	const animador = new Animador({imgpajaroVerde.imagenes()})
+	//	imagenes = [
+	//	"dragonrojo/DRAGON-13.png",
+	//	"dragonrojo/DRAGON-15.png",
+	//	"dragonrojo/DRAGON-16.png",
+	//	"dragonrojo/DRAGON-17.png",
+	//	"dragonrojo/DRAGON-18.png",
+	//	"dragonrojo/DRAGON-14.png"
+	//])
 
 	var property position
 	var property image = animador.imagenInicial()
