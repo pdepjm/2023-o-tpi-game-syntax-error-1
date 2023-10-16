@@ -8,5 +8,6 @@ program demon {
 	setup.setup_board()
 	setup.setup_player()
 	setup.setup_enemy()
+	setup.setupBala()
 	game.start()
 }
