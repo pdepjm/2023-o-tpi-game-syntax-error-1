@@ -1,10 +1,10 @@
 import wollok.game.*
-import bala.*
-	
+import disparo.*
 class Enemigo {
 
-	var property energia
+	var property energia 
 	var property vidas = 3
+	var property disparo = null
 
 	var posX = 0
 	var posY = 30
@@ -24,7 +24,7 @@ class Enemigo {
 
  }
 
-	method image() = "nave1.png"
+	method image() = "nave/nave.png"
 
 	method perderVida() {
 		vidas = vidas - 1
@@ -38,6 +38,11 @@ class Enemigo {
 	}
 
 	method disparar() {
+		
+		if(disparo == null || !game.hasVisual(disparo)){
+			disparo = new Disparo(position = position.left(1).down(1), direccion= -1 )			
+			game.addVisual(disparo)		
+		}	  
 	}
 
 	method morir() {
@@ -45,7 +50,6 @@ class Enemigo {
 	}
 
 }
-
 
 
 
