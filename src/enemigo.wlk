@@ -13,6 +13,7 @@ class Enemigo {
 		"dragonrojo/DRAGON-18.png",
 		"dragonrojo/DRAGON-14.png"
 	])
+  var disparo = null
 
 	var property position
 	var property image = "dragonrojo/DRAGON-13.png"
@@ -70,6 +71,13 @@ class Enemigo {
 			if(self.position().y() == (game.height() - 3)) self.position(position.down(1))
 		}
 	}
+  
+  method disparar() {	
+	  if(disparo == null || !game.hasVisual(disparo)){
+		  disparo = new Disparo(position = position.left(1).down(1), direccion= -1 )			
+		  game.addVisual(disparo)		
+	  }	  
+  }
 
 	method morir() {
 		animador.imagenes([
@@ -83,9 +91,3 @@ class Enemigo {
 		animador.animarYRemover(self)
 	}
 }
-
-
-
-
-
-

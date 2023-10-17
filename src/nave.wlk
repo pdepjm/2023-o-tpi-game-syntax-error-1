@@ -24,9 +24,15 @@ object nave {
 		keyboard.a().onPressDo({self.position(position.left(1))})
 		keyboard.d().onPressDo({self.position(position.right(1))})
 	}
+  
+  method disparar(disparo){
+	  if( !game.hasVisual(disparo)){
+		  soundProducer.sound("disparo.wav").play()			
+		  game.addVisual(disparo)			
+	  }
+  }
 	
 	method morir() {
 		animador.animarYRemover(self)
 	}
 }
-
