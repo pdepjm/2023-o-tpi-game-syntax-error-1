@@ -31,6 +31,14 @@ object setup {
 		game.onTick(200, "animar_enemigo", {
 			listaEnemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
+		game.onCollideDo(enemigo, { 
+			if(enemigo.vidas() == 0) {
+				enemigo.morir()
+				listaEnemigos.remove(enemigo)
+			}else {
+				enemigo.vida(-1)
+			}
+		})
 	}
 	
 	// devuelve una posicion random dentro de los límites establecidos

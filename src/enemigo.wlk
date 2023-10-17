@@ -20,19 +20,11 @@ class Enemigo {
 	method energia()=energia
 	method energia(nuevaEnergia){energia = nuevaEnergia}
 	
-	method vidas() = vidas
-	method vidas(nuevoValor){vidas = nuevoValor}
+	method vidas(valor) {
+		vidas = vidas + valor
+	}
 	
 	method animador() = animador
-		
-	method perderEnergia (){}
-
-	method perderVida() {
-		vidas = vidas - 1
-		if (vidas == 0) {
-			self.morir()
-		}
-	}
 
 	method moverse() {
 		const dirX = nave.position().x() - self.position().x()

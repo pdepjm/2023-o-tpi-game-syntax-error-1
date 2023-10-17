@@ -1,6 +1,6 @@
 import wollok.game.*
 
-object bala {
+class bala {
   var property position
   method position(nuevaPosicion) {
   position = nuevaPosicion
