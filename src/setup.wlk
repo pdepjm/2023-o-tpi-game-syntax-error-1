@@ -20,9 +20,8 @@ object setup {
 	}
 
 	method setup_enemy() {
-		
 		game.onTick(10000, "invocar_enemigo", {
-			const enemigo = new Enemigo(position=self.randomPos(0.1,0.90,0.60,0.45),energia=0)
+			const enemigo = new Enemigo(position=self.randomPos(0.1,0.9,0.60,0.45),energia=0)
 			game.addVisual(enemigo)
 			listaEnemigos.add(enemigo)
 		})

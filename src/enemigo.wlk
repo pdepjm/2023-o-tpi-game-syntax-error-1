@@ -16,8 +16,6 @@ class Enemigo {
 
 	var property position
 	var property image = "dragonrojo/DRAGON-13.png"
-
-	const color = ["verde","amarillo","rojo"]
 	
 	method energia()=energia
 	method energia(nuevaEnergia){energia = nuevaEnergia}
@@ -50,16 +48,16 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 		
-		if(dirX.abs() <= 10) {
-			self.seguir_jugador(dirX,dirY)
+		if(dirX.abs() <= 20) {
+			self.seguirJugador(dirX,dirY)
 		}else {
 			self.position(direccion.anyOne())
 		}
 		
-		self.evitar_limites()
+		self.evitarLimites()
 	}
 	
-	method seguir_jugador(dirX,dirY) {
+	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
 		if(dirY.abs() >= 35) {
@@ -71,7 +69,7 @@ class Enemigo {
 		}
 	}
 	
-	method evitar_limites() {
+	method evitarLimites() {
 		const posicionLimite = game.at(game.width(),game.height())
 		
 		if(self.position().distance(posicionLimite) < 5){

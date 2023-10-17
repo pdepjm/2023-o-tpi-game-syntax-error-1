@@ -2,7 +2,7 @@ import wollok.game.*
 
 class Animador {
 	var imagenes 
-	var index = 1
+	var index = 0
 	
 	method imagenes(imgs) {
 		imagenes = imgs
@@ -10,22 +10,22 @@ class Animador {
 	
 	method animar(objeto) {
 		objeto.image(self.siguiente())
-		index = index + 1
 	}
 	
 	method animarYRemover(objeto) {
 		var vez = 0
 		game.onTick(150, "muerte_enemigo", {
 			self.animar(objeto)
-			vez = vez + 1
 			if(vez >= imagenes.size()){
 				game.removeTickEvent("muerte_enemigo")
 				game.removeVisual(objeto)
-			}		
+			}
+			vez = vez + 1		
 		})
 	}
 
 	method siguiente() {
+		index = index + 1
 		try {
 			return imagenes.get(index) 	
 		}
@@ -34,6 +34,4 @@ class Animador {
 			return imagenes.get(index)
 		}		
 	}
-	
-	method imagenInicial() = imagenes.get(0) 
 }
