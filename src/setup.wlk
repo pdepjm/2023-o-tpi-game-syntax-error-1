@@ -19,13 +19,11 @@ object setup {
 		nave.moverse()
 	    keyboard.space().onPressDo{ const disparo = new Disparo( position = nave.position().right(1).up(1), direccion = 1) 
 	    	nave.disparar(disparo)
-	    	game.onCollideDo(disparo, {const enemigo = game.uniqueCollider(disparo)
-	    	//game.say(enemigo,"memori")
-			//disparos.remove(disparo)
-			//enemigos.remove(enemigo)
-			//game.removeVisual(enemigo)
-			
-			//disparo.eliminarDisparo()	
+	    	game.onCollideDo(disparo, {enemigo =>
+			disparo.eliminarDisparo()
+			disparos.remove(disparo)
+			game.removeVisual(enemigo)
+				
 			})
 	    	game.onTick(10,"moverBala",{disparos.forEach{bala=> bala.mover()}}) 
 	    	disparos.add(disparo)
@@ -37,7 +35,6 @@ object setup {
 	    
 		
 	}
-
 	method setupEnemy() {
 		enemigos = [game.onTick(5000,"invocar_enemigo",{game.addVisual(new Enemigo(position=self.randomPos(0.1,0.90,0.80,0.45), energia = 100))})]
 		
