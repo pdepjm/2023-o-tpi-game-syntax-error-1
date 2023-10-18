@@ -6,7 +6,7 @@ import setup.*
 	
 class Enemigo {
 	var property energia
-	var vidas = 3
+	var vidas = 1
 	const animador = new Animador(imagenes = [
 		"dragonrojo/DRAGON-13.png",
 		"dragonrojo/DRAGON-15.png",
@@ -74,9 +74,9 @@ class Enemigo {
   	}
   	
   	method sufrirDanio() {
-  		if(vidas != 0) {
-  			vidas = vidas - 1
-  		}else {
+  		vidas = vidas - 1
+  		
+  		if(vidas <= 0) {
   			self.morir()
   		}
   	}
