@@ -1,17 +1,31 @@
 import wollok.game.*
+import nave.*
+import setup.*
+import enemigo.*
 
-object bala {
-  var property position
-  method position(nuevaPosicion) {
-  position = nuevaPosicion
-  }
-  method image() = "bala.png"
-// method subir() {
-// if (self.position().y() < game.height()) {
-// position = position.up(1)
-// } else {
-// game.removeTickEvent("Disparo")
-// game.removeVisual(self)
-// }
-// }
- }
+class Disparo{
+	var property position
+	const property image = "bala.png"
+	var direccion
+	
+	method spawn() {
+		setup.aniadirDisparos(self)
+		game.onCollideDo(self, {enemigo =>
+			enemigo.sufrirDanio()
+			self.eliminarDisparo()	
+		})
+	   	game.onTick(500,"expiraBala",{
+	   		self.eliminarDisparo()
+	    })
+	}
+
+	method mover(){
+		self.position(position.up(direccion))
+	}
+	
+	method eliminarDisparo(){
+		setup.removerDisparos(self)
+		game.removeVisual(self)
+		game.removeTickEvent("expiraBala")
+	}
+}

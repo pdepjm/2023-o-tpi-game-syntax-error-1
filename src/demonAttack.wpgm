@@ -1,12 +1,10 @@
 import wollok.game.*
 import setup.*
-import nave.*
-import bala.*
-import enemigo.*
 
-program demon {
-	setup.setup_board()
-	setup.setup_player()
-	setup.setup_enemy()
+program demonAttack {
+	setup.setupBoard()
+	setup.setupPlayer()
+	setup.setupEnemy()
+	setup.setupBala()
 	game.start()
 }
