@@ -1,22 +1,31 @@
 import wollok.game.*
 import nave.*
+import setup.*
+import enemigo.*
 
 class Disparo{
 	var property position
-	var direccion
 	const property image = "bala.png"
-	method position(posicion){
-		position = posicion
+	var direccion
+	
+	method spawn() {
+		setup.aniadirDisparos(self)
+		game.onCollideDo(self, {enemigo =>
+			enemigo.sufrirDanio()
+			self.eliminarDisparo()	
+		})
+	   	game.onTick(500,"expiraBala",{
+	   		self.eliminarDisparo()
+	    })
 	}
+
 	method mover(){
-		position = position.up(direccion)
-	}
-	method eliminarDisparo(){
-		if( game.hasVisual(self)){
-					game.removeVisual(self)
-					game.removeTickEvent("expiraBala")
-					game.removeTickEvent("moverBala")
-				}
+		self.position(position.up(direccion))
 	}
 	
+	method eliminarDisparo(){
+		setup.removerDisparos(self)
+		game.removeVisual(self)
+		game.removeTickEvent("expiraBala")
+	}
 }

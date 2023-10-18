@@ -1,11 +1,23 @@
 import wollok.game.*
 import nave.*
-import disparo.*
+import bala.*
 import enemigo.*
 
 object setup {
-	const listaEnemigos = []
+	const enemigos = []
 	const disparos = []
+	
+	method aniadirDisparos(disparo) {
+		disparos.add(disparo)
+	}
+	
+	method removerDisparos(disparo) {
+		disparos.remove(disparo)
+	}
+	
+	method removerEnemigos(enemigo) {
+		enemigos.remove(enemigo)
+	}
   
 	method setupBoard() {
 		game.width(50)
@@ -18,48 +30,27 @@ object setup {
 	method setupPlayer() {
 		game.addVisual(nave)
 		nave.moverse()
-    keyboard.space().onPressDo{ const disparo = new Disparo( position = nave.position().right(1).up(1), direccion = 1) 
-	      nave.disparar(disparo)
-	    	game.onCollideDo(disparo, {enemigo =>
-			disparo.eliminarDisparo()
-			disparos.remove(disparo)
-			game.removeVisual(enemigo)
-				
-			})
-	    	game.onTick(10,"moverBala",{disparos.forEach{bala=> bala.mover()}}) 
-	    	disparos.add(disparo)
-	    	game.onTick(600,"expiraBala",{
-	    		disparos.remove(disparo)
-	    		disparo.eliminarDisparo()
-	    	})
-	    }
-	}
+    	keyboard.space().onPressDo{nave.disparar()}
+	}	
 
-	method setup_enemy() {
-		 game.onTick(10000, "invocar_enemigo", {
+	method setupEnemy() {
+		game.onTick(10000, "invocar_enemigo", {
 			const enemigo = new Enemigo(position=self.randomPos(0.1,0.9,0.60,0.45),energia=0)
 			game.addVisual(enemigo)
-			listaEnemigos.add(enemigo)
+			enemigos.add(enemigo)
 		})
 		game.onTick(600, "mover_enemigo",{
-			listaEnemigos.forEach({enemigo => enemigo.moverse()})	
+			enemigos.forEach({enemigo => enemigo.moverse()})	
 		})
 		game.onTick(200, "animar_enemigo", {
-			listaEnemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
-		})
-		game.onCollideDo(enemigo, { 
-			if(enemigo.vidas() == 0) {
-				enemigo.morir()
-				listaEnemigos.remove(enemigo)
-			}else {
-				enemigo.vida(-1)
-			}
+			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
 	}
   
 	method setupBala() {
-		if(!disparos.isEmpty()){
-			}
+		game.onTick(10,"moverBala", {disparos.forEach{bala => 
+			if(!disparos.isEmpty()) bala.mover()
+		}})
 	}
 
 	// devuelve una posicion random dentro de los límites establecidos

@@ -1,5 +1,7 @@
 import wollok.game.*
 import animador.*
+import sonido.*
+import bala.*
 
 object nave {
 	var property position = game.at(game.width()/2,0)
@@ -25,12 +27,12 @@ object nave {
 		keyboard.d().onPressDo({self.position(position.right(1))})
 	}
   
-  method disparar(disparo){
-	  if( !game.hasVisual(disparo)){
-		  soundProducer.sound("disparo.wav").play()			
-		  game.addVisual(disparo)			
-	  }
-  }
+  	method disparar(){	
+	  		const disparo = new Disparo( position = self.position().right(1).up(1), direccion = 1)
+	  		game.addVisual(disparo)
+	  		disparo.spawn()
+		  	soundProducer.sound("disparo.wav").play()					
+  	}
 	
 	method morir() {
 		animador.animarYRemover(self)
