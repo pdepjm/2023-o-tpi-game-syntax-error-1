@@ -5,7 +5,6 @@ import animador.*
 import setup.*
 	
 class Enemigo {
-	var property energia
 	var vidas = 1
 	const animador = new Animador(imagenes = [
 		"dragonrojo/DRAGON-13.png",
@@ -15,10 +14,8 @@ class Enemigo {
 		"dragonrojo/DRAGON-14.png"
 	])
 	var property position
-	var property image = "dragonrojo/DRAGON-13.png"
 	
-	method energia()=energia
-	method energia(nuevaEnergia){energia = nuevaEnergia}
+	var property image = "dragonrojo/DRAGON-13.png"
 	
 	method animador() = animador
 
