@@ -33,7 +33,7 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 		
-		if(dirX.abs() <= 20) {
+		if(dirX.abs() <= 15) {
 			self.seguirJugador(dirX,dirY)
 		}else {
 			self.position(direccion.anyOne())
@@ -45,7 +45,7 @@ class Enemigo {
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
-		if(dirY.abs() >= 35) {
+		if(dirY.abs() >= 15) {
 			// se mueve en dirección al jugador
 			self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 		}
