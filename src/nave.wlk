@@ -33,6 +33,8 @@ object nave {
 	  		disparo.spawn()
 		  	soundProducer.sound("disparo.wav").play()					
   	}
+  	
+  	method sufrirDanio() {}
 	
 	method morir() {
 		animador.animarYRemover(self)

@@ -11,7 +11,7 @@ class Disparo{
 	method spawn() {
 		setup.aniadirDisparos(self)
 		game.onCollideDo(self, {enemigo =>
-			enemigo.sufrirDanio()
+			if(game.hasVisual(enemigo)) enemigo.sufrirDanio()
 			self.eliminarDisparo()	
 		})
 	   	game.onTick(600,"expiraBala",{
