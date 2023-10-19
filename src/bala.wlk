@@ -14,9 +14,6 @@ class Disparo{
 			if(game.hasVisual(enemigo)) enemigo.sufrirDanio()
 			self.eliminarDisparo()	
 		})
-	   	game.onTick(600,"expiraBala",{
-	   		self.eliminarDisparo()
-	    })
 	}
 
 	method mover(){
@@ -26,6 +23,5 @@ class Disparo{
 	method eliminarDisparo(){
 		setup.removerDisparos(self)
 		game.removeVisual(self)
-		game.removeTickEvent("expiraBala")
 	}
 }

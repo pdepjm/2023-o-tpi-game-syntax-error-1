@@ -29,19 +29,19 @@ object nave {
 	}
   
   	method disparar(){	
-	  		const disparo = new Disparo( position = self.position(), direccion = 1)
+	  		const disparo = new Disparo( position = self.position().up(1), direccion = 1)
 	  		game.addVisual(disparo)
 	  		disparo.spawn()
 		  	soundProducer.sound("disparo.wav").play()					
   	}
   	
-  	method sufrirDanio() {
+  	/*method sufrirDanio() {
   		vidas = vidas - 1
   		
   		if(vidas <= 0) {
   			self.morir()
   		}
-  	}
+  	}*/
 	
 	method morir() {
 		animador.animarYRemover(self)

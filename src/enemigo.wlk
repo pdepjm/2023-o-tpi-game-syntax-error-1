@@ -33,7 +33,7 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 		
-		if(dirX.abs() <= 15) {
+		if(dirX.abs() <= 10) {
 			self.seguirJugador(dirX,dirY)
 		}else {
 			self.position(direccion.anyOne())
