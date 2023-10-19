@@ -18,7 +18,7 @@ object setup {
 	method removerEnemigos(enemigo) {
 		enemigos.remove(enemigo)
 	}
-  
+  	
 	method setupBoard() {
 		game.width(50)
 		game.height(40)
@@ -26,13 +26,13 @@ object setup {
 		game.title("Demon Attack")
 		game.boardGround("fondo.png")
 	}
-
+	
 	method setupPlayer() {
 		game.addVisual(nave)
 		nave.moverse()
     	keyboard.space().onPressDo{nave.disparar()}
 	}	
-
+	
 	method setupEnemy() {
 		game.onTick(10000, "invocar_enemigo", {
 			const enemigo = new Enemigo(position=self.randomPos(0.1,0.9,0.60,0.45),energia=0)
@@ -46,13 +46,13 @@ object setup {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
 	}
-  
+  	
 	method setupBala() {
 		game.onTick(10,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) bala.mover()
 		}})
 	}
-
+	
 	// devuelve una posicion random dentro de los límites establecidos
 	method randomPos(limStartX, limEndX, limStartY, limEndY) {
 		const randXpos = (game.width() * limStartX).randomUpTo(game.width() * limEndX) 
@@ -61,4 +61,3 @@ object setup {
 		return game.at(randXpos,randYpos)
 	}
 }
-

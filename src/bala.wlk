@@ -5,7 +5,7 @@ import enemigo.*
 
 class Disparo{
 	var property position
-	const property image = "bala.png"
+	const property image = "prueba_bala.png"
 	var direccion
 	
 	method spawn() {
@@ -14,7 +14,7 @@ class Disparo{
 			enemigo.sufrirDanio()
 			self.eliminarDisparo()	
 		})
-	   	game.onTick(500,"expiraBala",{
+	   	game.onTick(600,"expiraBala",{
 	   		self.eliminarDisparo()
 	    })
 	}

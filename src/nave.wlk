@@ -28,7 +28,7 @@ object nave {
 	}
   
   	method disparar(){	
-	  		const disparo = new Disparo( position = self.position().right(1).up(1), direccion = 1)
+	  		const disparo = new Disparo( position = self.position(), direccion = 1)
 	  		game.addVisual(disparo)
 	  		disparo.spawn()
 		  	soundProducer.sound("disparo.wav").play()					
