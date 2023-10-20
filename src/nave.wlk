@@ -43,8 +43,8 @@ object nave {
 		]
 		
 	method moverse() {
-		keyboard.a().onPressDo({self.animacion("izquierda")})
-		keyboard.d().onPressDo({self.animacion("derecha")})
+		keyboard.a().onPressDo({self.moverse("izquierda")})
+		keyboard.d().onPressDo({self.moverse("derecha")})
 	}
 	
   
@@ -55,7 +55,7 @@ object nave {
 		  	soundProducer.sound("disparo.wav").play()					
   	}
   	
-  	method animacion(direccion){
+  	method moverse(direccion){
   		if (direccion == "derecha"){
   			indiceMovimiento = 0
   			image = imagenes_animacion.get(indiceMovimiento)
