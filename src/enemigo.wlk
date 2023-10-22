@@ -5,7 +5,7 @@ import animador.*
 import setup.*
 	
 class Enemigo {
-	var vidas = 1
+	var property vidas = 1
 	const animador = new Animador(imagenes = [
 		"dragonrojo/DRAGON-13.png",
 		"dragonrojo/DRAGON-15.png",
@@ -65,17 +65,8 @@ class Enemigo {
 	}
   
   	method disparar() {	
-		const disparo = new Disparo(position = position.left(1).down(1), direccion = -1)
-		game.addVisual(disparo)	
+		const disparo = new DisparoPotente(position = position.left(1).down(1), direccion = -1)	
 		disparo.spawn()		
-  	}
-  	
-  	method sufrirDanio() {
-  		vidas = vidas - 1
-  		
-  		if(vidas <= 0) {
-  			self.morir()
-  		}
   	}
 
 	method morir() {
