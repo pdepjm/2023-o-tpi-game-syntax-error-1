@@ -21,10 +21,16 @@ class Enemigo {
 	method energia(nuevaEnergia){energia = nuevaEnergia}
 	
 	method animador() = animador
-
-	method moverse() {
+	
+	method vectorAJugador() {
 		const dirX = nave.position().x() - self.position().x()
 		const dirY = nave.position().y() - self.position().y()
+		
+		return new Position(x=dirX, y=dirY)
+	}
+
+	method moverse() {
+		const vecAJugador = self.vectorAJugador()
 		const direccion = [
 			position.up(1),
 			position.down(1),
@@ -36,8 +42,8 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 		
-		if(dirX.abs() <= 20) {
-			self.seguirJugador(dirX,dirY)
+		if(vecAJugador.x().abs() <= 20) {
+			self.seguirJugador(vecAJugador.x(),vecAJugador.y())
 		}else {
 			self.position(direccion.anyOne())
 		}
@@ -67,10 +73,14 @@ class Enemigo {
 		}
 	}
   
-  	method disparar() {	
-		const disparo = new Disparo(position = position.left(1).down(1), direccion = -1)
-		game.addVisual(disparo)	
-		disparo.spawn()		
+  	method disparar() {
+  		const vecAJugador = self.vectorAJugador()
+  		
+  		if(vecAJugador.x().abs() <= 10) {
+			const disparo = new Disparo(position = position.down(1), direccion = -1)
+			game.addVisual(disparo)	
+			disparo.spawn()
+		}
   	}
   	
   	method sufrirDanio() {
