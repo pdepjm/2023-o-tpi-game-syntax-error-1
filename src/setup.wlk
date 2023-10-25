@@ -52,7 +52,7 @@ object setup {
 	}
 	
 	method setupBala() {
-		game.onTick(10,"moverBala", {disparos.forEach{bala => 
+		game.onTick(15,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
 					bala.eliminarDisparo() 
