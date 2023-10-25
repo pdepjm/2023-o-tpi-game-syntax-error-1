@@ -2,6 +2,7 @@ import wollok.game.*
 import animador.*
 import sonido.*
 import bala.*
+import puntaje.*
 
 object nave {
 	var property vidas = 2
@@ -44,6 +45,7 @@ object nave {
     
 	method morir() {
 		animador.animarYRemover(self)
+		puntaje.position(game.center())
 		game.schedule(2000, {game.clear()})
 	}
 }
