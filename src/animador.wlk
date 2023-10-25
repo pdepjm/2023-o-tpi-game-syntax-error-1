@@ -17,8 +17,8 @@ class Animador {
 		game.onTick(150, "muerte_enemigo", {
 			self.animar(objeto)
 			if(vez >= imagenes.size()){
+				if(game.hasVisual(objeto)) game.removeVisual(objeto)
 				game.removeTickEvent("muerte_enemigo")
-				game.removeVisual(objeto)
 			}
 			vez = vez + 1		
 		})

@@ -5,20 +5,11 @@ import animador.*
 import setup.*
 	
 class Enemigo {
-	var property energia
-	var vidas = 3
-	const animador = new Animador(imagenes = [
-		"dragonrojo/DRAGON-13.png",
-		"dragonrojo/DRAGON-15.png",
-		"dragonrojo/DRAGON-16.png",
-		"dragonrojo/DRAGON-18.png",
-		"dragonrojo/DRAGON-14.png"
-	])
+	var property vidas 
+	const animador 
 	var property position
-	var property image = "dragonrojo/DRAGON-13.png"
 	
-	method energia()=energia
-	method energia(nuevaEnergia){energia = nuevaEnergia}
+	var property image 
 	
 	method animador() = animador
 	
@@ -42,6 +33,7 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 		
+
 		if(vecAJugador.x().abs() <= 20) {
 			self.seguirJugador(vecAJugador.x(),vecAJugador.y())
 		}else {
@@ -50,11 +42,10 @@ class Enemigo {
 		
 		self.evitarLimites()
 	}
-	
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
-		if(dirY.abs() >= 35) {
+		if(dirY.abs() >= 15) {
 			// se mueve en dirección al jugador
 			self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 		}
@@ -73,22 +64,15 @@ class Enemigo {
 		}
 	}
   
+
   	method disparar() {
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			const disparo = new Disparo(position = position.down(1), direccion = -1)
-			game.addVisual(disparo)	
-			disparo.spawn()
-		}
-  	}
-  	
-  	method sufrirDanio() {
-  		if(vidas != 0) {
-  			vidas = vidas - 1
-  		}else {
-  			self.morir()
-  		}
+			  const disparo = new Disparo(position = position.down(1), direccion = -1)
+			  game.addVisual(disparo)	
+			  disparo.spawn()
+		  }
   	}
 
 	method morir() {
@@ -103,4 +87,27 @@ class Enemigo {
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
+}
+
+class DragonRojo inherits Enemigo(
+	image = "dragonrojo/DRAGON-13.png",
+	animador = new Animador(imagenes = [
+		"dragonrojo/DRAGON-13.png",
+		"dragonrojo/DRAGON-15.png",
+		"dragonrojo/DRAGON-16.png",
+		"dragonrojo/DRAGON-18.png",
+		"dragonrojo/DRAGON-14.png"
+	]),
+	vidas = 1 
+){
+	
+}
+class Moluscocerebro inherits Enemigo(
+	image = "moluscocerebro/MOLUSCOCEREBRO.png",
+	animador = new Animador(imagenes = [
+		"moluscocerebro/MOLUSCOCEREBRO-02.png",
+		"moluscocerebro/MOLUSCOCEREBRO-03.png",
+		"moluscocerebro/MOLUSCOCEREBRO-04.png"
+	]),
+	vidas = 2 ){
 }
