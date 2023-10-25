@@ -3,11 +3,12 @@ import bala.*
 import nave.*
 import animador.*
 import setup.*
-	
+import puntaje.*
 class Enemigo {
 	var property vidas 
 	const animador 
 	var property position
+	const valorPuntosEnemigo
 	
 	var property image 
 	
@@ -89,6 +90,7 @@ class Enemigo {
 			"nubeverde/NUBEVERDE-05.png",
 			"nubeverde/NUBEVERDE-06.png"
 		])
+		puntaje.puntaje(valorPuntosEnemigo)
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
@@ -103,7 +105,8 @@ class DragonRojo inherits Enemigo(
 		"dragonrojo/DRAGON-18.png",
 		"dragonrojo/DRAGON-14.png"
 	]),
-	vidas = 1 
+	vidas = 1,
+	valorPuntosEnemigo = 10
 ){}
 
 class Moluscocerebro inherits Enemigo(
@@ -113,7 +116,8 @@ class Moluscocerebro inherits Enemigo(
 		"moluscocerebro/MOLUSCOCEREBRO-03.png",
 		"moluscocerebro/MOLUSCOCEREBRO-04.png"
 	]),
-	vidas = 2
+	vidas = 2,
+	valorPuntosEnemigo = 50
 ){}
 
 class PajarosVerdes inherits Enemigo(
@@ -127,7 +131,5 @@ class PajarosVerdes inherits Enemigo(
 		"pajarosverdes/pajarosverdes-08.png",
 		"pajarosverdes/pajarosverdes-09.png"
 	]),
-	vidas = 30){
-		var property valorPuntosEnemigo = 300
-	
-}
+	vidas = 5 , valorPuntosEnemigo = 100)
+{}
