@@ -1,10 +1,7 @@
 import wollok.game.*
-import setup.*
+import inicio.*
 
 program demonAttack {
-	setup.setupBoard()
-	setup.setupPlayer()
-	setup.setupEnemy()
-	setup.setupBala()
+	pulsarParaIniciar.iniciar()
 	game.start()
 }
