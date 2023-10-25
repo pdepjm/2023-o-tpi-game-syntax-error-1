@@ -4,7 +4,7 @@ import sonido.*
 import bala.*
 
 object nave {
-	var property vidas = 3
+	var property vidas = 2
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(imagenes=[
 		"explosion/Explosion-12.png",
@@ -34,11 +34,11 @@ object nave {
 		  	soundProducer.sound("disparo.wav").play()					
   	}
     
-  	method sufrirDanio() {
-  		if(vidas != 0) {
-  			vidas = vidas - 1
-  		}else {
+  	method sufrirDanio(danio) {
+  		if(vidas == 0) {
   			self.morir()
+  		}else {
+  			vidas = vidas - danio
   		}
   	}
     

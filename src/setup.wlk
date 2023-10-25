@@ -35,8 +35,8 @@ object setup {
 	}	
 	
 	method setupEnemy() {
-		game.onTick(4000, "invocar_enemigo", {
-			const enemigo = new DragonRojo (position=self.randomPos(0.1,0.9,0.60,0.45))
+		game.onTick(5000, "invocar_enemigo", {
+			const enemigo = new DragonRojo(position=self.randomPos(0.1,0.9,0.60,0.45))
 			game.addVisual(enemigo)
 			enemigos.add(enemigo)
 		})
@@ -46,25 +46,26 @@ object setup {
 		game.onTick(200, "animar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
-		game.onTick(1500, "disparar_enemigo", {
+		game.onTick(2000, "disparar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.disparar()})
 		})
 	}
 	
-  	
 	method setupBala() {
 		game.onTick(10,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) {
-				bala.mover()
-				if(bala.position().y().abs() >= game.height()) bala.eliminarDisparo() 			
+				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
+					bala.eliminarDisparo() 
+				
+				bala.mover() 			
 			}
 		}})
 	}
 	
 	// devuelve una posicion random dentro de los límites establecidos
-	method randomPos(limStartX, limEndX, limStartY, limEndY) {
-		const randXpos = (game.width() * limStartX).randomUpTo(game.width() * limEndX) 
-		const randYpos = (game.height() * limStartY).randomUpTo(game.height() * limEndY)
+	method randomPos(limInicioX, limFinalX, limInicioY, limFinalY) {
+		const randXpos = (game.width() * limInicioX).randomUpTo(game.width() * limFinalX) 
+		const randYpos = (game.height() * limInicioY).randomUpTo(game.height() * limFinalY)
 		
 		return game.at(randXpos,randYpos)
 	}

@@ -32,7 +32,6 @@ class Enemigo {
 			position.down(1).right(1),
 			position.down(1).left(1)
 		]
-		
 
 		if(vecAJugador.x().abs() <= 20) {
 			self.seguirJugador(vecAJugador.x(),vecAJugador.y())
@@ -64,15 +63,21 @@ class Enemigo {
 		}
 	}
   
-
   	method disparar() {
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
 			  const disparo = new Disparo(position = position.down(1), direccion = -1)
-			  game.addVisual(disparo)	
 			  disparo.spawn()
 		  }
+  	}
+  	
+	method sufrirDanio(danio) {
+  		if(vidas == 0) {
+  			self.morir()
+  		}else {
+  			vidas = vidas - danio
+  		}
   	}
 
 	method morir() {
@@ -99,9 +104,8 @@ class DragonRojo inherits Enemigo(
 		"dragonrojo/DRAGON-14.png"
 	]),
 	vidas = 1 
-){
-	
-}
+){}
+
 class Moluscocerebro inherits Enemigo(
 	image = "moluscocerebro/MOLUSCOCEREBRO.png",
 	animador = new Animador(imagenes = [
@@ -109,5 +113,5 @@ class Moluscocerebro inherits Enemigo(
 		"moluscocerebro/MOLUSCOCEREBRO-03.png",
 		"moluscocerebro/MOLUSCOCEREBRO-04.png"
 	]),
-	vidas = 2 ){
-}
+	vidas = 2
+){}

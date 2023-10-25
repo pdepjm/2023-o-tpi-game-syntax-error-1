@@ -1,7 +1,7 @@
 import wollok.game.*
 import nave.*
+import enemigo.*
 import setup.*
-//import enemigo.*
 
 class Disparo {
 	var property position
@@ -12,30 +12,22 @@ class Disparo {
 	method spawn() {
 		game.addVisual(self)
 		setup.aniadirDisparos(self)
-		game.onCollideDo(self, {enemigo =>
-			if(game.hasVisual(enemigo)) self.daniar(enemigo)
+		game.onCollideDo(self, {visual =>
+			if(game.hasVisual(visual)) visual.sufrirDanio(danio)
 			self.eliminarDisparo()	
 		})
-		game.schedule(90, {
+		game.schedule(110, {
 			self.habilidad()
 		})
 	}
 	
 	method habilidad() {}
 	
-	method daniar(visual) {
-		visual.vidas(visual.vidas() - self.danio())
-		
-		if(visual.vidas() <= 0) {
-			visual.morir()
-		}
-	}
-
+	method sufrirDanio(_danio) {}
+	
 	method mover(){
 		self.position(position.up(direccion))
 	}
-	
-	method danio() = danio
 	
 	method eliminarDisparo(){
 		setup.removerDisparos(self)
@@ -43,9 +35,7 @@ class Disparo {
 	}
 }
 
-class DisparoPotente inherits Disparo(image= "prueba_bala.png") {
-	override method danio() = 2
-}
+class DisparoPotente inherits Disparo(image= "prueba_bala.png", danio= 2) {}
 
 class DisparoDividido inherits Disparo(image= "prueba_bala.png") {
 	override method habilidad() {
