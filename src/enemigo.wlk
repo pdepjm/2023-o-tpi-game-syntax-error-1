@@ -5,17 +5,11 @@ import animador.*
 import setup.*
 	
 class Enemigo {
-	var property vidas = 1
-	const animador = new Animador(imagenes = [
-		"dragonrojo/DRAGON-13.png",
-		"dragonrojo/DRAGON-15.png",
-		"dragonrojo/DRAGON-16.png",
-		"dragonrojo/DRAGON-18.png",
-		"dragonrojo/DRAGON-14.png"
-	])
+	var property vidas 
+	const animador 
 	var property position
 	
-	var property image = "dragonrojo/DRAGON-13.png"
+	var property image 
 	
 	method animador() = animador
 
@@ -41,7 +35,6 @@ class Enemigo {
 		
 		self.evitarLimites()
 	}
-	
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
@@ -81,4 +74,27 @@ class Enemigo {
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
+}
+
+class DragonRojo inherits Enemigo(
+	image = "dragonrojo/DRAGON-13.png",
+	animador = new Animador(imagenes = [
+		"dragonrojo/DRAGON-13.png",
+		"dragonrojo/DRAGON-15.png",
+		"dragonrojo/DRAGON-16.png",
+		"dragonrojo/DRAGON-18.png",
+		"dragonrojo/DRAGON-14.png"
+	]),
+	vidas = 1 
+){
+	
+}
+class Moluscocerebro inherits Enemigo(
+	image = "moluscocerebro/MOLUSCOCEREBRO.png",
+	animador = new Animador(imagenes = [
+		"moluscocerebro/MOLUSCOCEREBRO-02.png",
+		"moluscocerebro/MOLUSCOCEREBRO-03.png",
+		"moluscocerebro/MOLUSCOCEREBRO-04.png"
+	]),
+	vidas = 2 ){
 }
