@@ -115,3 +115,19 @@ class Moluscocerebro inherits Enemigo(
 	]),
 	vidas = 2
 ){}
+
+class PajarosVerdes inherits Enemigo(
+	image = "pajarosverdes/pajarosverdes-02.png",
+	animador = new Animador(imagenes = [
+		"pajarosverdes/pajarosverdes-03.png",
+		"pajarosverdes/pajarosverdes-04.png",
+		"pajarosverdes/pajarosverdes-05.png",
+		"pajarosverdes/pajarosverdes-06.png",
+		"pajarosverdes/pajarosverdes-07.png",
+		"pajarosverdes/pajarosverdes-08.png",
+		"pajarosverdes/pajarosverdes-09.png"
+	]),
+	vidas = 30){
+		var property valorPuntosEnemigo = 300
+	
+}

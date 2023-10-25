@@ -36,7 +36,7 @@ object setup {
 	
 	method setupEnemy() {
 		game.onTick(5000, "invocar_enemigo", {
-			const enemigo = new DragonRojo(position=self.randomPos(0.1,0.9,0.60,0.45))
+			const enemigo = new PajarosVerdes(position=self.randomPos(0.1,0.9,0.60,0.45))
 			game.addVisual(enemigo)
 			enemigos.add(enemigo)
 		})
