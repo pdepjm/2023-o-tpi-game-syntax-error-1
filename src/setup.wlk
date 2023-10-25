@@ -46,6 +46,9 @@ object setup {
 		game.onTick(200, "animar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
+		game.onTick(1500, "disparar_enemigo", {
+			enemigos.forEach({enemigo => enemigo.disparar()})
+		})
 	}
 	
   	
