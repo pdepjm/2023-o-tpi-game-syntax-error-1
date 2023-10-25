@@ -128,6 +128,6 @@ class PajarosVerdes inherits Enemigo(
 		"pajarosverdes/pajarosverdes-09.png"
 	]),
 	vidas = 30){
-		var property valorPuntosEnemigo = 305
+		var property valorPuntosEnemigo = 300
 	
 }
