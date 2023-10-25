@@ -2,6 +2,7 @@ import wollok.game.*
 import nave.*
 import bala.*
 import enemigo.*
+import animador.*
 
 object setup {
 	const enemigos = []
@@ -35,7 +36,7 @@ object setup {
 	
 	method setupEnemy() {
 		game.onTick(4000, "invocar_enemigo", {
-			const enemigo = new Enemigo(position=self.randomPos(0.1,0.9,0.60,0.45))
+			const enemigo = new DragonRojo (position=self.randomPos(0.1,0.9,0.60,0.45))
 			game.addVisual(enemigo)
 			enemigos.add(enemigo)
 		})
@@ -46,6 +47,7 @@ object setup {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
 	}
+	
   	
 	method setupBala() {
 		game.onTick(10,"moverBala", {disparos.forEach{bala => 
