@@ -2,7 +2,7 @@ import wollok.game.*
 import animador.*
 import sonido.*
 import bala.*
-
+// variable = nombrelista.size()
 object nave {
 	//var vidas = 3
 	var indiceMovimiento
