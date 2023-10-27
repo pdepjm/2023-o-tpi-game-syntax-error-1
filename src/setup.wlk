@@ -35,19 +35,14 @@ object setup {
     	keyboard.space().onPressDo{nave.disparar()}
 	}	
 	
-	method setupEnemy() { 
-		game.onTick(5000, "invocar_enemigo", {
-			const enemigo = new DragonRojo(position=self.randomPos(0.1,0.9,0.60,0.45))
-			game.addVisual(enemigo)
-			enemigos.add(enemigo)
-		})
-		game.onTick(10000, "invocar_enemigo2", {
-			const enemigo = new Moluscocerebro(position=self.randomPos(0.1,0.9,0.60,0.45))
-			game.addVisual(enemigo)
-			enemigos.add(enemigo)
-		})
-		game.onTick(15000, "invocar_enemigo3", {
-			const enemigo = new PajarosVerdes(position=self.randomPos(0.1,0.9,0.60,0.45))
+	method setupEnemy() {
+		const invoc_enemigos = [
+			{new DragonRojo(position=self.randomPos(0.1,0.9,0.60,0.45))},
+			{new Moluscocerebro(position=self.randomPos(0.1,0.9,0.60,0.45))},
+			{new PajarosVerdes(position=self.randomPos(0.1,0.9,0.60,0.45))}
+		]
+		game.onTick(7000, "invocar_enemigo", {
+			const enemigo = invoc_enemigos.anyOne().apply()
 			game.addVisual(enemigo)
 			enemigos.add(enemigo)
 		})
