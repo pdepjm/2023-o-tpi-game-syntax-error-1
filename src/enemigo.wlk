@@ -3,25 +3,26 @@ import bala.*
 import nave.*
 import animador.*
 import setup.*
-	
+import puntaje.*
 class Enemigo {
-	var vidas = 1
-	const animador = new Animador(imagenes = [
-		"dragonrojo/DRAGON-13.png",
-		"dragonrojo/DRAGON-15.png",
-		"dragonrojo/DRAGON-16.png",
-		"dragonrojo/DRAGON-18.png",
-		"dragonrojo/DRAGON-14.png"
-	])
+	var property vidas 
+	const animador 
 	var property position
+	const valorPuntosEnemigo
 	
-	var property image = "dragonrojo/DRAGON-13.png"
+	var property image 
 	
 	method animador() = animador
-
-	method moverse() {
+	
+	method vectorAJugador() {
 		const dirX = nave.position().x() - self.position().x()
 		const dirY = nave.position().y() - self.position().y()
+		
+		return new Position(x=dirX, y=dirY)
+	}
+
+	method moverse() {
+		const vecAJugador = self.vectorAJugador()
 		const direccion = [
 			position.up(1),
 			position.down(1),
@@ -32,16 +33,15 @@ class Enemigo {
 			position.down(1).right(1),
 			position.down(1).left(1)
 		]
-		
-		if(dirX.abs() <= 10) {
-			self.seguirJugador(dirX,dirY)
+
+		if(vecAJugador.x().abs() <= 20) {
+			self.seguirJugador(vecAJugador.x(),vecAJugador.y())
 		}else {
 			self.position(direccion.anyOne())
 		}
 		
 		self.evitarLimites()
 	}
-	
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
@@ -64,17 +64,20 @@ class Enemigo {
 		}
 	}
   
-  	method disparar() {	
-		const disparo = new Disparo(position = position.left(1).down(1), direccion = -1)
-		game.addVisual(disparo)	
-		disparo.spawn()		
+  	method disparar() {
+  		const vecAJugador = self.vectorAJugador()
+  		
+  		if(vecAJugador.x().abs() <= 10) {
+			  const disparo = new Disparo(position = position.down(1), direccion = -1)
+			  disparo.spawn()
+		  }
   	}
   	
-  	method sufrirDanio() {
-  		vidas = vidas - 1
-  		
-  		if(vidas <= 0) {
+	method sufrirDanio(danio) {
+  		if(vidas == 0) {
   			self.morir()
+  		}else {
+  			vidas = vidas - danio
   		}
   	}
 
@@ -87,7 +90,46 @@ class Enemigo {
 			"nubeverde/NUBEVERDE-05.png",
 			"nubeverde/NUBEVERDE-06.png"
 		])
+		puntaje.puntaje(valorPuntosEnemigo)
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
 }
+
+class DragonRojo inherits Enemigo(
+	image = "dragonrojo/DRAGON-13.png",
+	animador = new Animador(imagenes = [
+		"dragonrojo/DRAGON-13.png",
+		"dragonrojo/DRAGON-15.png",
+		"dragonrojo/DRAGON-16.png",
+		"dragonrojo/DRAGON-18.png",
+		"dragonrojo/DRAGON-14.png"
+	]),
+	vidas = 1,
+	valorPuntosEnemigo = 10
+){}
+
+class Moluscocerebro inherits Enemigo(
+	image = "moluscocerebro/MOLUSCOCEREBRO.png",
+	animador = new Animador(imagenes = [
+		"moluscocerebro/MOLUSCOCEREBRO-02.png",
+		"moluscocerebro/MOLUSCOCEREBRO-03.png",
+		"moluscocerebro/MOLUSCOCEREBRO-04.png"
+	]),
+	vidas = 2,
+	valorPuntosEnemigo = 50
+){}
+
+class PajarosVerdes inherits Enemigo(
+	image = "pajarosverdes/pajarosverdes-02.png",
+	animador = new Animador(imagenes = [
+		"pajarosverdes/pajarosverdes-03.png",
+		"pajarosverdes/pajarosverdes-04.png",
+		"pajarosverdes/pajarosverdes-05.png",
+		"pajarosverdes/pajarosverdes-06.png",
+		"pajarosverdes/pajarosverdes-07.png",
+		"pajarosverdes/pajarosverdes-08.png",
+		"pajarosverdes/pajarosverdes-09.png"
+	]),
+	vidas = 5 , valorPuntosEnemigo = 100)
+{}
