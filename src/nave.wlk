@@ -5,7 +5,7 @@ import bala.*
 import puntaje.*
 
 object nave {
-	var property vidas = 2
+	var vidas = 2
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(imagenes=[
 		"explosion/Explosion-12.png",

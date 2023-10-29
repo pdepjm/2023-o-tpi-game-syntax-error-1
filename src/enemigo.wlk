@@ -5,7 +5,7 @@ import animador.*
 import setup.*
 import puntaje.*
 class Enemigo {
-	var property vidas 
+	var vidas 
 	const animador 
 	var property position
 	const valorPuntosEnemigo
@@ -34,7 +34,7 @@ class Enemigo {
 			position.down(1).left(1)
 		]
 
-		if(vecAJugador.x().abs() <= 20) {
+		if(vecAJugador.x().abs() <= 5) {
 			self.seguirJugador(vecAJugador.x(),vecAJugador.y())
 		}else {
 			self.position(direccion.anyOne())
@@ -45,7 +45,7 @@ class Enemigo {
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
-		if(dirY.abs() >= 15) {
+		if(dirY.abs() >= 6) {
 			// se mueve en dirección al jugador
 			self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 		}
@@ -57,10 +57,10 @@ class Enemigo {
 	method evitarLimites() {
 		const posicionLimite = game.at(game.width(),game.height())
 		
-		if(self.position().distance(posicionLimite) < 5){
-			if(self.position().x() == game.width() - 3) self.position(position.left(1))
-			if(self.position().x() == 3) self.position(position.right(1))
-			if(self.position().y() == (game.height() - 3)) self.position(position.down(1))
+		if(self.position().distance(posicionLimite) < 8){
+			if(self.position().x() < game.width() - 6) self.position(position.left(1))
+			if(self.position().x() < 6) self.position(position.right(1))
+			if(self.position().y() < (game.height() - 6)) self.position(position.down(1))
 		}
 	}
   
