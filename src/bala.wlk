@@ -39,8 +39,8 @@ class DisparoPotente inherits Disparo(image= "prueba_bala.png", danio= 2) {}
 
 class DisparoDividido inherits Disparo(image= "prueba_bala.png") {
 	override method habilidad() {
-		const disparoIzq = new Disparo(position= self.position().left(2), direccion= direccion)
-		const disparoDer = new Disparo(position= self.position().right(2), direccion= direccion)
+		const disparoIzq = new Disparo(position= self.position().left(1), direccion= direccion)
+		const disparoDer = new Disparo(position= self.position().right(1), direccion= direccion)
 		
 		disparoIzq.spawn()
 		disparoDer.spawn()

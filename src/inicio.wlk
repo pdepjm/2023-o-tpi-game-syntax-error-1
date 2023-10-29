@@ -3,7 +3,7 @@ import setup.*
 import puntaje.*
 
 object pulsarParaIniciar {
-	var property position = game.at(4,17)
+	var property position = game.center()
 	var property image = "inicio.png"
 	method iniciar(){
 		setup.setupBoard()

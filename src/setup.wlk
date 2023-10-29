@@ -22,9 +22,9 @@ object setup {
 	}
   	
 	method setupBoard() {
-		game.width(50)
-		game.height(40)
-		game.cellSize(20)
+		game.width(20)
+		game.height(15)
+		game.cellSize(60)
 		game.title("Demon Attack")
 		game.boardGround("fondo.png")
 	}

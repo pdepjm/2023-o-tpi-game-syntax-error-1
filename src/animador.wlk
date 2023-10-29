@@ -23,7 +23,7 @@ class Animador {
 			vez = vez + 1		
 		})
 	}
-
+	
 	method siguiente() {
 		index = index + 1
 		try {
