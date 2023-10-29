@@ -83,12 +83,15 @@ class Enemigo {
 
 	method morir() {
 		animador.imagenes([
-			"nubeverde/NUBEVERDE.png",
-			"nubeverde/NUBEVERDE-02.png",
-			"nubeverde/NUBEVERDE-03.png",
-			"nubeverde/NUBEVERDE-04.png",
-			"nubeverde/NUBEVERDE-05.png",
-			"nubeverde/NUBEVERDE-06.png"
+			"nubeverde/ExplosionVerde-0.png",
+			"nubeverde/ExplosionVerde-1.png",
+			"nubeverde/ExplosionVerde-2.png",
+			"nubeverde/ExplosionVerde-3.png",
+			"nubeverde/ExplosionVerde-4.png",
+			"nubeverde/ExplosionVerde-5.png",
+			"nubeverde/ExplosionVerde-6.png",
+			"nubeverde/ExplosionVerde-7.png",
+			"nubeverde/ExplosionVerde-8.png"
 		])
 		puntaje.puntaje(valorPuntosEnemigo)
 		setup.removerEnemigos(self)
@@ -97,39 +100,44 @@ class Enemigo {
 }
 
 class DragonRojo inherits Enemigo(
-	image = "dragonrojo/DRAGON-13.png",
+	image = "dragonrojo/DragonRojo-1.png",
 	animador = new Animador(imagenes = [
-		"dragonrojo/DRAGON-13.png",
-		"dragonrojo/DRAGON-15.png",
-		"dragonrojo/DRAGON-16.png",
-		"dragonrojo/DRAGON-18.png",
-		"dragonrojo/DRAGON-14.png"
+		"dragonrojo/DragonRojo-1.png",
+		"dragonrojo/DragonRojo-2.png",
+		"dragonrojo/DragonRojo-3.png",
+		"dragonrojo/DragonRojo-4.png",
+		"dragonrojo/DragonRojo-5.png",
+		"dragonrojo/DragonRojo-6.png",
+		"dragonrojo/DragonRojo-7.png",
+		"dragonrojo/DragonRojo-8.png"
 	]),
 	vidas = 1,
 	valorPuntosEnemigo = 10
 ){}
 
 class Moluscocerebro inherits Enemigo(
-	image = "moluscocerebro/MOLUSCOCEREBRO.png",
+	image = "moluscocerebro/MoluscoCerebro-1.png",
 	animador = new Animador(imagenes = [
-		"moluscocerebro/MOLUSCOCEREBRO-02.png",
-		"moluscocerebro/MOLUSCOCEREBRO-03.png",
-		"moluscocerebro/MOLUSCOCEREBRO-04.png"
+		"moluscocerebro/MoluscoCerebro-1.png",
+		"moluscocerebro/MoluscoCerebro-2.png",
+		"moluscocerebro/MoluscoCerebro-3.png",
+		"moluscocerebro/MoluscoCerebro-4.png"
 	]),
 	vidas = 2,
 	valorPuntosEnemigo = 50
 ){}
 
 class PajarosVerdes inherits Enemigo(
-	image = "pajarosverdes/pajarosverdes-02.png",
+	image = "pajarosverdes/PajarosVerdes-1.png",
 	animador = new Animador(imagenes = [
-		"pajarosverdes/pajarosverdes-03.png",
-		"pajarosverdes/pajarosverdes-04.png",
-		"pajarosverdes/pajarosverdes-05.png",
-		"pajarosverdes/pajarosverdes-06.png",
-		"pajarosverdes/pajarosverdes-07.png",
-		"pajarosverdes/pajarosverdes-08.png",
-		"pajarosverdes/pajarosverdes-09.png"
+		"pajarosverdes/PajarosVerdes-1.png",
+		"pajarosverdes/PajarosVerdes-2.png",
+		"pajarosverdes/PajarosVerdes-3.png",
+		"pajarosverdes/PajarosVerdes-4.png",
+		"pajarosverdes/PajarosVerdes-5.png",
+		"pajarosverdes/PajarosVerdes-6.png",
+		"pajarosverdes/PajarosVerdes-7.png",
+		"pajarosverdes/PajarosVerdes-8.png"
 	]),
 	vidas = 5 , valorPuntosEnemigo = 100)
 {}
