@@ -5,7 +5,7 @@ import setup.*
 
 class Disparo {
 	var property position
-	const property image = "prueba_bala.png"
+	const property image = "balaA.png"
 	var direccion
 	var danio = 1
 	
@@ -35,9 +35,9 @@ class Disparo {
 	}
 }
 
-class DisparoPotente inherits Disparo(image= "prueba_bala.png", danio= 2) {}
+class DisparoPotente inherits Disparo(image= "balaA.png", danio= 2) {}
 
-class DisparoDividido inherits Disparo(image= "prueba_bala.png") {
+class DisparoDividido inherits Disparo(image= "balaA.png") {
 	override method habilidad() {
 		const disparoIzq = new Disparo(position= self.position().left(1), direccion= direccion)
 		const disparoDer = new Disparo(position= self.position().right(1), direccion= direccion)
