@@ -14,7 +14,7 @@ class Animador {
 	
 	method animarYRemover(objeto) {
 		var vez = 0
-		game.onTick(150, "muerte_enemigo", {
+		game.onTick(125, "muerte_enemigo", {
 			self.animar(objeto)
 			if(vez >= imagenes.size()){
 				if(game.hasVisual(objeto)) game.removeVisual(objeto)

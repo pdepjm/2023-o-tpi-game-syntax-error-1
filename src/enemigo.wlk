@@ -115,6 +115,28 @@ class DragonRojo inherits Enemigo(
 	valorPuntosEnemigo = 10
 ){}
 
+class Terodactilo inherits Enemigo(
+	image = "terodactilo/Terodactilo-1.png",
+	animador = new Animador(imagenes = [
+		"terodactilo/Terodactilo-1.png",
+		"terodactilo/Terodactilo-2.png",
+		"terodactilo/Terodactilo-3.png",
+		"terodactilo/Terodactilo-4.png",
+		"terodactilo/Terodactilo-5.png",
+		"terodactilo/Terodactilo-6.png",
+		"terodactilo/Terodactilo-7.png",
+		"terodactilo/Terodactilo-8.png",
+		"terodactilo/Terodactilo-9.png",
+		"terodactilo/Terodactilo-10.png",
+		"terodactilo/Terodactilo-11.png",
+		"terodactilo/Terodactilo-12.png",
+		"terodactilo/Terodactilo-13.png",
+		"terodactilo/Terodactilo-14.png"
+	]),
+	vidas = 3,
+	valorPuntosEnemigo = 35
+){}
+
 class Moluscocerebro inherits Enemigo(
 	image = "moluscocerebro/MoluscoCerebro-1.png",
 	animador = new Animador(imagenes = [
@@ -128,16 +150,31 @@ class Moluscocerebro inherits Enemigo(
 ){}
 
 class PajarosVerdes inherits Enemigo(
-	image = "pajarosverdes/PajarosVerdes-1.png",
+	image = "pajarosverdes/PajaroVerde-1.png",
 	animador = new Animador(imagenes = [
-		"pajarosverdes/PajarosVerdes-1.png",
-		"pajarosverdes/PajarosVerdes-2.png",
-		"pajarosverdes/PajarosVerdes-3.png",
-		"pajarosverdes/PajarosVerdes-4.png",
-		"pajarosverdes/PajarosVerdes-5.png",
-		"pajarosverdes/PajarosVerdes-6.png",
-		"pajarosverdes/PajarosVerdes-7.png",
-		"pajarosverdes/PajarosVerdes-8.png"
+		"pajarosverdes/PajaroVerde-1.png",
+		"pajarosverdes/PajaroVerde-2.png",
+		"pajarosverdes/PajaroVerde-3.png",
+		"pajarosverdes/PajaroVerde-4.png",
+		"pajarosverdes/PajaroVerde-5.png",
+		"pajarosverdes/PajaroVerde-6.png",
+		"pajarosverdes/PajaroVerde-7.png",
+		"pajarosverdes/PajaroVerde-8.png",
+		"pajarosverdes/PajaroVerde-9.png",
+		"pajarosverdes/PajaroVerde-10.png",
+		"pajarosverdes/PajaroVerde-11.png",
+		"pajarosverdes/PajaroVerde-12.png",
+		"pajarosverdes/PajaroVerde-13.png",
+		"pajarosverdes/PajaroVerde-14.png",
+		"pajarosverdes/PajaroVerde-15.png",
+		"pajarosverdes/PajaroVerde-16.png",
+		"pajarosverdes/PajaroVerde-17.png",
+		"pajarosverdes/PajaroVerde-18.png",
+		"pajarosverdes/PajaroVerde-19.png",
+		"pajarosverdes/PajaroVerde-20.png",
+		"pajarosverdes/PajaroVerde-21.png",
+		"pajarosverdes/PajaroVerde-22.png",
+		"pajarosverdes/PajaroVerde-23.png"
 	]),
 	vidas = 5 , valorPuntosEnemigo = 100)
 {}

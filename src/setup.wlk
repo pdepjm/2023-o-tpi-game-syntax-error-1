@@ -39,7 +39,8 @@ object setup {
 		const invoc_enemigos = [
 			{new DragonRojo(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Moluscocerebro(position=self.randomPos(0.1,0.9,0.70,0.45))},
-			{new PajarosVerdes(position=self.randomPos(0.1,0.9,0.70,0.45))}
+			{new PajarosVerdes(position=self.randomPos(0.1,0.9,0.70,0.45))},
+			{new Terodactilo(position=self.randomPos(0.1,0.9,0.70,0.45))}
 		]
 		game.onTick(7000, "invocar_enemigo", {
 			const enemigo = invoc_enemigos.anyOne().apply()
@@ -58,7 +59,7 @@ object setup {
 	}
 	
 	method setupBala() {
-		game.onTick(35,"moverBala", {disparos.forEach{bala => 
+		game.onTick(55,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
 					bala.eliminarDisparo() 
