@@ -12,12 +12,21 @@
 (agregar)
 
 ## Reglas de Juego / Instrucciones
+Nuestra version del arcade de 1982 para la consola Atari 2600.
+El jugador debe usar su arma para destruir las legiones de demonios que atacan desde arriba.
 
-(Escribirlas)
+Controles: 
+Presionar <Enter> para comenzar el juego
+A - Mover a Izquierda
+D - Mover a Derecha
+
+Shoot: Barra Espaciadora
+
+El juego finaliza cuando
 
 
 ## Otros
 
-- K2104/UTN
+- Curso K2104 (Jueves Mañana / UTN FRBA) 
 - Versión de wollok
 - Una vez terminado, no tenemos problemas en que el repositorio sea público
