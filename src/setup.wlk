@@ -23,7 +23,7 @@ object setup {
   	
 	method setupBoard() {
 		game.width(20)
-		game.height(15)
+		game.height(13)
 		game.cellSize(60)
 		game.title("Demon Attack")
 		game.boardGround("fondo.png")
@@ -59,7 +59,7 @@ object setup {
 	}
 	
 	method setupBala() {
-		game.onTick(55,"moverBala", {disparos.forEach{bala => 
+		game.onTick(25,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
 					bala.eliminarDisparo() 
