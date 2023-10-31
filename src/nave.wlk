@@ -55,7 +55,6 @@ object nave {
 		//puntaje.position(game.center())
 		puntaje.position(game.at(200,200))
 		game.schedule(2000, {finJuego.limpiar()})
-		game.start()
 	}
 	method reiniciar(){
 		vidas = vidas + 3
