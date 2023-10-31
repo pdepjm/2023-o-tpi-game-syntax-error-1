@@ -8,7 +8,7 @@
 - Yañez Romero, Diego 
 
 ## Capturas
-![image](https://github.com/pdepjm/bitacoras/assets/48812037/74506bcc-7a19-47f0-b58f-42a5e74c7636)
+![image](assets/game_start.png)
 (agregar)
 
 ## Reglas de Juego / Instrucciones
