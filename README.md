@@ -8,7 +8,7 @@
 - Yañez Romero, Diego 
 
 ## Capturas
-
+![image](https://github.com/pdepjm/bitacoras/assets/48812037/74506bcc-7a19-47f0-b58f-42a5e74c7636)
 (agregar)
 
 ## Reglas de Juego / Instrucciones
@@ -22,7 +22,7 @@ D - Mover a Derecha
 
 Shoot: Barra Espaciadora
 
-El juego finaliza cuando
+El juego finaliza cuando el jugador pierde 3 vidas
 
 
 ## Otros
