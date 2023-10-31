@@ -56,4 +56,8 @@ object nave {
 		game.schedule(2000, {game.clear()})
 		game.start()
 	}
+	method reiniciar(){
+		vidas = vidas + 3
+		image = "nave1.png"
+	}
 }
