@@ -1,7 +1,0 @@
-import wollok.game.*
-import inicio.*
-
-program demonAttack {
-	pulsarParaIniciar.iniciar()
-	game.start()
-}
