@@ -1,8 +1,0 @@
-import animador.*
-import bala.*
-import enemigo.*
-import inicio.*
-import nave.*
-import setup.*
-import wollok.game.*
-import sonido.*
