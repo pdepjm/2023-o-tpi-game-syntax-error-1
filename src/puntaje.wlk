@@ -27,7 +27,11 @@ class PuntajeDigital{
 		"digits/ocho.png",
 		"digits/nueve.png"
 		]
+	
 	 method miles(){
+	 	var position = game.at(7,7)
+	 	var digito = self.miles()
+	 	var image = self.imagenes().get(digito)
 	 	return puntaje.puntaje().div(1000)	
 	 }
 	 method cientos(){

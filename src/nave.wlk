@@ -27,10 +27,14 @@ object nave {
 	var property image = "nave1.png"
 
 	method moverse() {
-		keyboard.a().onPressDo({self.position(position.left(1))})
-		keyboard.d().onPressDo({self.position(position.right(1))})
+		keyboard.a().onPressDo({ 
+			if(position.x() >= 1 ){self.position(position.left(1))} 
+			 else {position = game.at(0,0)}})
+		keyboard.d().onPressDo({
+		    if(position.x() < game.width()-1){self.position(position.right(1))}
+			 else {position = game.at(game.width()-1,0)}})
 	}
-  
+  		
   	method disparar(){	
 	  		const disparo = new DisparoDividido( position = self.position().up(1), direccion = 1)
 	  		disparo.spawn()

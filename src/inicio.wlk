@@ -4,7 +4,7 @@ import puntaje.*
 import animador.*
 import enemigo.*
 
-object pulsarParaIniciar {
+object pulsarParaIniciar { 
 	var property position = game.at(0,0)
 	var property image = "fondoanimado/fondo00.gif"
 	var property enemigos = []
