@@ -3,6 +3,7 @@ import animador.*
 import sonido.*
 import bala.*
 import puntaje.*
+import finJuego.*
 
 object nave {
 	var vidas = 3
@@ -53,7 +54,7 @@ object nave {
 		animador.animarYRemover(self)
 		//puntaje.position(game.center())
 		puntaje.position(game.at(200,200))
-		game.schedule(2000, {game.clear()})
+		game.schedule(2000, {finJuego.limpiar()})
 		game.start()
 	}
 	method reiniciar(){
