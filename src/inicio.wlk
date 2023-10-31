@@ -3,6 +3,7 @@ import setup.*
 import puntaje.*
 import animador.*
 import enemigo.*
+import nave.*
 
 object pulsarParaIniciar { 
 	const property position = game.at(0,0)
@@ -20,12 +21,15 @@ object pulsarParaIniciar {
 			const enemigo = invoc_enemigos.anyOne().apply()
 			game.addVisual(enemigo)
 			enemigos.add(enemigo)
-			game.schedule(3000, {enemigo.morir(false)})
+			game.schedule(3000, {
+				enemigos.remove(enemigo)
+				enemigo.morir(false)
+			})
 		})
 		game.onTick(750, "mover_enemigo",{
 			enemigos.forEach({enemigo => enemigo.moverse()})	
 		})
-		game.onTick(200, "animar_enemigo", {
+		game.onTick(150, "animar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
 	}
@@ -37,8 +41,9 @@ object pulsarParaIniciar {
 		self.introduccion()
 		
 		keyboard.enter().onPressDo({
-			game.clear()
+			setup.gameClear()
 			game.addVisual(puntaje)
+			nave.reiniciar()
 			setup.setupPlayer()
 			setup.setupEnemy()
 			setup.setupBala()

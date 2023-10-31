@@ -16,7 +16,7 @@ class Disparo {
 			if(game.hasVisual(visual)) visual.sufrirDanio(danio)
 			self.eliminarDisparo()	
 		})
-		game.schedule(70000, {
+		game.schedule(50, {
 			self.habilidad()
 		})
 	}

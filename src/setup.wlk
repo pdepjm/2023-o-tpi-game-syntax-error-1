@@ -35,7 +35,7 @@ object setup {
 		game.addVisual(nave)
 		nave.moverse()
     	keyboard.space().onPressDo{nave.disparar()}
-	}	
+	}
 	
 	method setupEnemy() {
 		const invoc_enemigos = [
@@ -51,7 +51,7 @@ object setup {
 		game.onTick(750, "mover_enemigo",{
 			enemigos.forEach({enemigo => enemigo.moverse()})	
 		})
-		game.onTick(200, "animar_enemigo", {
+		game.onTick(150, "animar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
 		game.onTick(2000, "disparar_enemigo", {
@@ -69,6 +69,13 @@ object setup {
 			}
 		}})
 	}
+	
+	method gameClear() {
+		game.clear()
+		enemigos.clear()
+		disparos.clear()
+	}
+	
 	
 	// devuelve una posicion random dentro de los límites establecidos
 	method randomPos(limInicioX, limFinalX, limInicioY, limFinalY) {
