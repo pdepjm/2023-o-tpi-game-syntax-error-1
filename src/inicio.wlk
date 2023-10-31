@@ -42,7 +42,7 @@ object pulsarParaIniciar {
 			game.addVisual(puntaje)
 			setup.setupEnemy()
 			setup.setupBala()
-			game.schedule(3000, {puntaje.reiniciar()})
+			game.schedule(2300, {puntaje.reiniciar()})
 			game.removeVisual(self)
 		})
 	}
