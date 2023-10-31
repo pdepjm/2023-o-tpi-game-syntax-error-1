@@ -47,7 +47,7 @@ object setup {
 			{new PajarosVerdes(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Terodactilo(position=self.randomPos(0.1,0.9,0.70,0.45))}
 		]
-		game.onTick(7000, "invocar_enemigo", {
+		game.onTick(3000, "invocar_enemigo", {
 			const enemigo = invoc_enemigos.anyOne().apply()
 			enemigo.spawn()
 		})
