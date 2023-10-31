@@ -4,9 +4,10 @@ import sonido.*
 import bala.*
 import puntaje.*
 import finJuego.*
+import setup.*
 
 object nave {
-	var vidas = 3
+	var vidas = 2
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(imagenes=[
 		"explosion/Explosion-0.png",
@@ -37,7 +38,7 @@ object nave {
 	}
   		
   	method disparar(){	
-	  		const disparo = new DisparoDividido( position = self.position().up(1), direccion = 1)
+	  		const disparo = new Disparo( position = self.position().up(1), direccion = 1)
 	  		disparo.spawn()
 		  	soundProducer.sound("disparo.wav").play()					
   	}
@@ -54,10 +55,12 @@ object nave {
 		animador.animarYRemover(self)
 		puntaje.position(game.center())
 		puntaje.position(game.at(200,200))
-		game.schedule(2000, {game.addVisual(finJuego) finJuego.limpiar()})
+		finJuego.finDeJuego()
 	}
+	
 	method reiniciar(){
 		vidas = vidas + 3
 		image = "nave1.png"
+		self.position(game.at(game.width()/2,0))
 	}
 }

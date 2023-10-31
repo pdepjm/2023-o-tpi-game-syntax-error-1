@@ -5,13 +5,11 @@ import animador.*
 import setup.*
 import puntaje.*
 class Enemigo {
-	var vidas 
 	const animador 
-	var property position
 	const valorPuntosEnemigo
-	
+	var vidas 
 	var property image 
-	
+	var property position
 	method animador() = animador
 	
 	method vectorAJugador() {
@@ -154,7 +152,16 @@ class Moluscocerebro inherits Enemigo(
 	]),
 	vidas = 2,
 	valorPuntosEnemigo = 50
-){}
+){
+	override method atacar() {
+  		const vecAJugador = self.vectorAJugador()
+  		
+  		if(vecAJugador.x().abs() <= 10) {
+			  const disparo = new DisparoDividido(position = position.down(1), direccion = -1)
+			  disparo.spawn()
+		  }
+  	}
+}
 
 class PajarosVerdes inherits Enemigo(
 	image = "pajarosverdes/PajaroVerde-1.png",

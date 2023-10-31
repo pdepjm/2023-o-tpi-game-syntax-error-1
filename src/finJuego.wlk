@@ -5,18 +5,15 @@ import inicio.*
 import nave.*
 object finJuego {
 	var property position = game.at(0,0)
-	method image()="findejuego.png"
-	method limpiar(){
-			setup.removerTodosEnemigos()
-			game.removeTickEvent("invocar_enemigo")	
+	method image()="fondoanimado/fondo-1.gif"//cambiar a image de game over cuando esté lista
+
+	method finDeJuego() {
+		game.schedule(2000, {
+			setup.gameClear()
+			game.addVisual(self)
 			keyboard.r().onPressDo({
-				self.reiniciar()
+				pulsarParaIniciar.iniciar()
 			})
-	}
-	method reiniciar(){
-		game.clear()
-		puntaje.reiniciar()
-		nave.reiniciar()
-		pulsarParaIniciar.iniciar()
+		})
 	}
 }
