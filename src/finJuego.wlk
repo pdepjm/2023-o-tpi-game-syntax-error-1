@@ -19,5 +19,4 @@ object finJuego {
 		nave.reiniciar()
 		pulsarParaIniciar.iniciar()
 	}
-	
 }

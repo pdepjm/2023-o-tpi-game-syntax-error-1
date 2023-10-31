@@ -20,6 +20,11 @@ class Enemigo {
 		
 		return new Position(x=dirX, y=dirY)
 	}
+	
+	method spawn() {
+		game.addVisual(self)
+		setup.aniadirEnemigos(self)
+	}
 
 	method moverse() {
 		const vecAJugador = self.vectorAJugador()
@@ -39,6 +44,7 @@ class Enemigo {
 		}else {
 			self.position(direccion.anyOne())
 		}
+		if(vecAJugador.y().abs() <= 1) self.morir(false)
 		
 		self.evitarLimites()
 	}
@@ -52,6 +58,7 @@ class Enemigo {
 		else {
 			self.position(game.at(self.position().x() + (dirX/modulo)*2, self.position().y()))
 		}
+
 	}
 	
 	method evitarLimites() {
@@ -64,7 +71,7 @@ class Enemigo {
 		}
 	}
   
-  	method disparar() {
+  	method atacar() {
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
@@ -75,13 +82,13 @@ class Enemigo {
   	
 	method sufrirDanio(danio) {
   		if(vidas == 0) {
-  			self.morir()
+  			self.morir(true)
   		}else {
   			vidas = vidas - danio
   		}
   	}
 
-	method morir() {
+	method morir(porNave) {
 		animador.imagenes([
 			"nubeverde/ExplosionVerde-0.png",
 			"nubeverde/ExplosionVerde-1.png",
@@ -93,7 +100,7 @@ class Enemigo {
 			"nubeverde/ExplosionVerde-7.png",
 			"nubeverde/ExplosionVerde-8.png"
 		])
-		puntaje.puntaje(valorPuntosEnemigo)
+		if(porNave) puntaje.puntaje(valorPuntosEnemigo)
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
@@ -177,4 +184,22 @@ class PajarosVerdes inherits Enemigo(
 		"pajarosverdes/PajaroVerde-23.png"
 	]),
 	vidas = 5 , valorPuntosEnemigo = 100)
-{}
+{
+	override method spawn() {
+		super()
+		game.onCollideDo(self, { visual =>
+			if(visual.equals(nave)) {
+				nave.sufrirDanio(1)
+				self.morir(false)
+			}
+		})
+	}
+	
+	override method atacar() {}
+
+	override method seguirJugador(dirX,dirY) {
+		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
+		
+		self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
+	}
+}

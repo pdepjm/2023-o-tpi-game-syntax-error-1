@@ -12,17 +12,18 @@ object setup {
 	method aniadirDisparos(disparo) {
 		disparos.add(disparo)
 	}
-	
 	method removerDisparos(disparo) {
 		disparos.remove(disparo)
 	}
 	
+	method aniadirEnemigos(enemigo) {
+		enemigos.add(enemigo)
+	}
 	method removerEnemigos(enemigo) {
 		enemigos.remove(enemigo)
 	}
 	method removerTodosEnemigos() {
 		enemigos.forEach({unEnemigo => enemigos.remove(unEnemigo)})
-		enemigos.forEach({unEnemigo => game.removeVisual(unEnemigo)})
 	}
   	
 	method setupBoard() {
@@ -48,8 +49,7 @@ object setup {
 		]
 		game.onTick(7000, "invocar_enemigo", {
 			const enemigo = invoc_enemigos.anyOne().apply()
-			game.addVisual(enemigo)
-			enemigos.add(enemigo)
+			enemigo.spawn()
 		})
 		game.onTick(750, "mover_enemigo",{
 			enemigos.forEach({enemigo => enemigo.moverse()})	
@@ -58,7 +58,7 @@ object setup {
 			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
 		})
 		game.onTick(2000, "disparar_enemigo", {
-			enemigos.forEach({enemigo => enemigo.disparar()})
+			enemigos.forEach({enemigo => enemigo.atacar()})
 		})
 	}
 	

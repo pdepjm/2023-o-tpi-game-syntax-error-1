@@ -29,11 +29,11 @@ object nave {
 
 	method moverse() {
 		keyboard.a().onPressDo({ 
-			if(position.x() >= 1 ){self.position(position.left(1))} 
-			 else {position = game.at(0,0)}})
+			if(position.x() >= 1 ) self.position(position.left(1))
+		})
 		keyboard.d().onPressDo({
-		    if(position.x() < game.width()-1){self.position(position.right(1))}
-			 else {position = game.at(game.width()-1,0)}})
+		    if(position.x() < game.width()-1) self.position(position.right(1))
+		})
 	}
   		
   	method disparar(){	
@@ -52,7 +52,7 @@ object nave {
     
 	method morir() {
 		animador.animarYRemover(self)
-		//puntaje.position(game.center())
+		puntaje.position(game.center())
 		puntaje.position(game.at(200,200))
 		game.schedule(2000, {finJuego.limpiar()})
 	}
