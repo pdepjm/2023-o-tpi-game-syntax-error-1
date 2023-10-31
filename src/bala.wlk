@@ -30,8 +30,10 @@ class Disparo {
 	}
 	
 	method eliminarDisparo(){
-		setup.removerDisparos(self)
-		game.removeVisual(self)
+		if(game.hasVisual(self)) {
+			setup.removerDisparos(self)
+			game.removeVisual(self)
+		}
 	}
 }
 

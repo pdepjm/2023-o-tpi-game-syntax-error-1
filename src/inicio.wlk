@@ -37,10 +37,9 @@ object pulsarParaIniciar {
 		self.introduccion()
 		
 		keyboard.enter().onPressDo({
-			setup.removerTodosEnemigos()
 			game.clear()
-			setup.setupPlayer()
 			game.addVisual(puntaje)
+			setup.setupPlayer()
 			setup.setupEnemy()
 			setup.setupBala()
 		})

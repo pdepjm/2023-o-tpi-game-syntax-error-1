@@ -22,9 +22,6 @@ object setup {
 	method removerEnemigos(enemigo) {
 		enemigos.remove(enemigo)
 	}
-	method removerTodosEnemigos() {
-		enemigos.forEach({unEnemigo => enemigos.remove(unEnemigo)})
-	}
   	
 	method setupBoard() {
 		game.width(20)
