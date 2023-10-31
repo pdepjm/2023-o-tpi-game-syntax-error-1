@@ -3,15 +3,19 @@ import setup.*
 import puntaje.*
 import inicio.*
 import nave.*
+
 object finJuego {
 	var property position = game.at(0,0)
-	method image()="fondoanimado/fondo-1.gif"//cambiar a image de game over cuando esté lista
+	method image()="findejuego.png"
 
 	method finDeJuego() {
-		game.schedule(2000, {
+		puntaje.position(game.center())
+		
+		game.schedule(3000, {
 			setup.gameClear()
 			game.addVisual(self)
 			keyboard.r().onPressDo({
+				setup.reiniciar()
 				pulsarParaIniciar.iniciar()
 			})
 		})

@@ -70,6 +70,10 @@ object setup {
 		}})
 	}
 	
+	method reiniciar(){
+		nave.reiniciar()
+	}
+	
 	method gameClear() {
 		game.clear()
 		enemigos.clear()

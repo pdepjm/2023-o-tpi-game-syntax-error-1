@@ -44,7 +44,7 @@ object nave {
   	}
     
   	method sufrirDanio(danio) {
-  		if(vidas == 0) {
+  		if(vidas <= 0) {
   			self.morir()
   		}else {
   			vidas = vidas - danio
@@ -53,13 +53,11 @@ object nave {
     
 	method morir() {
 		animador.animarYRemover(self)
-		puntaje.position(game.center())
-		puntaje.position(game.at(200,200))
 		finJuego.finDeJuego()
 	}
 	
 	method reiniciar(){
-		vidas = vidas + 3
+		vidas = vidas + 2
 		image = "nave1.png"
 		self.position(game.at(game.width()/2,0))
 	}

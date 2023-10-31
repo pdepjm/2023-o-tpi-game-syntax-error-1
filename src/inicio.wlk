@@ -40,7 +40,6 @@ object pulsarParaIniciar {
 		keyboard.enter().onPressDo({
 			setup.gameClear()
 			game.addVisual(puntaje)
-			nave.reiniciar()
 			setup.setupPlayer()
 			setup.setupEnemy()
 			setup.setupBala()
