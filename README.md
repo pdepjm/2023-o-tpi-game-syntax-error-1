@@ -15,12 +15,12 @@
 Nuestra version del arcade de 1982 para la consola Atari 2600.
 El jugador debe usar su arma para destruir las legiones de demonios que atacan desde arriba.
 
-Controles: 
-Presionar <Enter> para comenzar el juego
-A - Mover a Izquierda
-D - Mover a Derecha
+Controles: <br/>
 
-Shoot: Barra Espaciadora
+**Enter** - para comenzar el juego <br/>
+**A** - Mover a Izquierda <br/>
+**D** - Mover a Derecha <br/>
+**Barra Espaciadora** - Disparar <br/>
 
 El juego finaliza cuando el jugador pierde 3 vidas
 
