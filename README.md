@@ -8,7 +8,7 @@
 - Yañez Romero, Diego 
 
 ## Capturas
-
+![image](assets/game_start.png)
 (agregar)
 
 ## Reglas de Juego / Instrucciones
@@ -22,7 +22,7 @@ D - Mover a Derecha
 
 Shoot: Barra Espaciadora
 
-El juego finaliza cuando
+El juego finaliza cuando el jugador pierde 3 vidas
 
 
 ## Otros
