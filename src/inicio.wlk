@@ -6,9 +6,9 @@ import enemigo.*
 import nave.*
 
 object pulsarParaIniciar { 
-	const property position = game.at(0,0)
-	const property image = "fondoanimado/fondo00.gif"
-	const enemigos = []
+	var property position = game.at(0,0)
+	var property image = "fondoanimado/fondo00.gif"
+	var property enemigos = []
 	method introduccion(){
 		const invoc_enemigos = [
 			{new DragonRojo(position=setup.randomPos(0.1,0.9,0.70,0.45))},
@@ -16,7 +16,6 @@ object pulsarParaIniciar {
 			{new PajarosVerdes(position=setup.randomPos(0.1,0.9,0.70,0.45))},
 			{new Terodactilo(position=setup.randomPos(0.1,0.9,0.70,0.45))}
 		]
-		
 		game.onTick(1000, "invocar_y_morir", {
 			const enemigo = invoc_enemigos.anyOne().apply()
 			game.addVisual(enemigo)
@@ -37,9 +36,7 @@ object pulsarParaIniciar {
 	method iniciar(){
 		setup.setupBoard()
 		game.addVisual(self)
-		
 		self.introduccion()
-		
 		keyboard.enter().onPressDo({
 			setup.gameClear()
 			game.addVisual(puntaje)

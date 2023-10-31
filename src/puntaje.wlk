@@ -12,11 +12,6 @@ object puntaje {
 		puntaje = 0
 	 	position = game.at(game.width()/2,game.height() - 1)
 	}
-	
-	method centrarPuntaje() {
-		puntaje.position(game.center())
-		puntaje.position(game.at(200,200))
-	}
 }
 
 class PuntajeDigital{
