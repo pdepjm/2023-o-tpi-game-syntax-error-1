@@ -54,7 +54,7 @@ object nave {
 		animador.animarYRemover(self)
 		puntaje.position(game.center())
 		puntaje.position(game.at(200,200))
-		game.schedule(2000, {finJuego.limpiar()})
+		game.schedule(2000, {game.addVisual(finJuego) finJuego.limpiar()})
 	}
 	method reiniciar(){
 		vidas = vidas + 3
