@@ -50,5 +50,6 @@ object nave {
 		//puntaje.position(game.center())
 		puntaje.position(game.at(200,200))
 		game.schedule(2000, {game.clear()})
+		game.start()
 	}
 }

@@ -45,6 +45,7 @@ class Miles inherits PuntajeDigital{
 	var property position = game.at(1,game.height()-2)
 	var property digito = self.miles()
 	method image() = self.imagenes().get(digito)
+	method show() = game.addVisual(self)
 }
 
 class Cientos inherits PuntajeDigital{
