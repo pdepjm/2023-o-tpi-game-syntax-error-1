@@ -5,7 +5,7 @@ import inicio.*
 import nave.*
 object finJuego {
 	var property position = game.at(0,0)
-	method image()="fondoanimado/fondo-1.gif"//cambiar a image de game over cuando esté lista
+	method image()="findejuego.png"
 	method limpiar(){
 			setup.removerTodosEnemigos()
 			game.removeTickEvent("invocar_enemigo")	
