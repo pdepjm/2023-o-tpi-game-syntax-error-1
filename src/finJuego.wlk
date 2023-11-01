@@ -6,7 +6,7 @@ import nave.*
 
 object finJuego {
 	var property position = game.at(0,0)
-	method image()="findejuego.png"
+	method image()="fondoanimado/FondoGAMEOVER/gameover00.gif"
 
 	method finDeJuego() {
 		puntaje.position(game.center())
