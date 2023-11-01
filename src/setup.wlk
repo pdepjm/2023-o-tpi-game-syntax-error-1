@@ -72,6 +72,7 @@ object setup {
 	
 	method reiniciar(){
 		nave.reiniciar()
+		puntaje.reiniciar()
 	}
 	
 	method gameClear() {
