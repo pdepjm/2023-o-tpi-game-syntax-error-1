@@ -10,6 +10,7 @@
 ## Capturas
 ![image](assets/game_start.png)
 ![image](assets/game_over.png)
+![image](assets/game_1.png)
 (agregar)
 
 ## Reglas de Juego / Instrucciones
