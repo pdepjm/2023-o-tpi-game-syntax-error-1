@@ -27,6 +27,7 @@ object nave {
 	])
 
 	var property image = "nave1.png"
+	var balaDisponible = true
 	
 	method spawn() {
 		game.addVisual(self)
@@ -44,10 +45,15 @@ object nave {
 		})
 	}
   		
-  	method disparar(){	
-	  		const disparo = new Disparo( position = self.position().up(1), direccion = 1)
-	  		disparo.spawn()
-		  	soundProducer.sound("disparo.wav").play()					
+  	method disparar(){
+  		if(balaDisponible) {
+	  			const disparo = new Disparo( position = self.position().up(1), direccion = 1)
+	  			disparo.spawn()
+		  		soundProducer.sound("disparo.wav").play()
+		  		balaDisponible = false
+		  		
+		  		game.schedule(250, {balaDisponible = true})
+		  	}
   	}
     
   	method sufrirDanio(danio) {
@@ -57,6 +63,11 @@ object nave {
   			vidas = vidas - danio
   			vidaActual.image(vidas)
   		}
+  	}
+  	
+  	method matarEnemigo(enemigo) {
+  		enemigo.morir()
+  		puntaje.puntaje(enemigo.valorPuntosEnemigo())
   	}
     
 	method morir() {

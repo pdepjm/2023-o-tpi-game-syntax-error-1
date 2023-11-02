@@ -51,7 +51,7 @@ object setup {
 			enemigos.forEach({enemigo => enemigo.moverse()})	
 		})
 		game.onTick(150, "animar_enemigo", {
-			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
+			enemigos.forEach({enemigo => enemigo.animar()})
 		})
 		game.onTick(2000, "disparar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.atacar()})
@@ -68,7 +68,7 @@ object setup {
 			}
 		}})
 		game.onTick(50, "animar_bala", {
-		disparos.forEach({bala => bala.animador().animar(bala)})
+		disparos.forEach({bala => bala.animar()})
 		})
 	}
 	

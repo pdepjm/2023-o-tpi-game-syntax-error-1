@@ -10,7 +10,10 @@ class Enemigo {
 	var vidas 
 	var property image 
 	var property position
-	method animador() = animador
+	
+	method valorPuntosEnemigo() = valorPuntosEnemigo
+	
+	method animar() { animador.animar(self) }
 	
 	method vectorAJugador() {
 		const dirX = nave.position().x() - self.position().x()
@@ -42,7 +45,7 @@ class Enemigo {
 		}else {
 			self.position(direccion.anyOne())
 		}
-		if(vecAJugador.y().abs() <= 1) self.morir(false)
+		if(vecAJugador.y().abs() <= 1) self.morir()
 		
 		self.evitarLimites()
 	}
@@ -80,13 +83,13 @@ class Enemigo {
   	
 	method sufrirDanio(danio) {
   		if(vidas == 0) {
-  			self.morir(true)
+  			nave.matarEnemigo(self)
   		}else {
   			vidas = vidas - danio
   		}
   	}
 
-	method morir(porNave) {
+	method morir() {
 		animador.imagenes([
 			"nubeverde/ExplosionVerde-0.png",
 			"nubeverde/ExplosionVerde-1.png",
@@ -98,7 +101,6 @@ class Enemigo {
 			"nubeverde/ExplosionVerde-7.png",
 			"nubeverde/ExplosionVerde-8.png"
 		])
-		if(porNave) puntaje.puntaje(valorPuntosEnemigo)
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
@@ -232,7 +234,7 @@ class PajarosVerdes inherits Enemigo(
 		game.onCollideDo(self, { visual =>
 			if(visual.equals(nave)) {
 				nave.sufrirDanio(1)
-				self.morir(false)
+				self.morir()
 			}
 		})
 	}
@@ -263,7 +265,7 @@ class PajarosVerdes inherits Enemigo(
 		game.onCollideDo(self, { visual =>
 			if(visual.equals(nave)) {
 				nave.sufrirDanio(2)
-				self.morir(false)
+				self.morir()
 			}
 		})
 		game.schedule(2000,{inmolacion = true})
@@ -287,7 +289,7 @@ class PajarosVerdes inherits Enemigo(
 		if(vecAJugador.y().abs() <= 1 or 
 			position.x()<=0 or 
 			position.x()>=game.width()
-		) self.morir(false)
+		) self.morir()
 	}
 
 }

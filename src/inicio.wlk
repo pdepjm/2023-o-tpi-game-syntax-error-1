@@ -47,7 +47,7 @@ object pulsarParaIniciar {
 		"fondoanimado/fondo02.gif"
 	])
 	var property enemigos = []
-	method animador()=animador
+	method animador() { animador.animar() }
 	
 	method introduccion(){
 		game.onTick(100,"animar_fondo",{animador.animar(self)})
@@ -71,7 +71,7 @@ object pulsarParaIniciar {
 			enemigos.forEach({enemigo => enemigo.moverse()})	
 		})
 		game.onTick(150, "animar_enemigo", {
-			enemigos.forEach({enemigo => enemigo.animador().animar(enemigo)})
+			enemigos.forEach({enemigo => enemigo.animar()})
 		})
 	}
 	
