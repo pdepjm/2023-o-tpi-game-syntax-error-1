@@ -43,7 +43,7 @@ object finJuego {
 		game.schedule(3000, {
 			setup.gameClear()
 			game.addVisual(self)
-			game.onTick(200,"animar_fondo",{animador.animar(self)})
+			game.onTick(100,"animar_fondo",{animador.animar(self)})
 			keyboard.r().onPressDo({
 				game.removeTickEvent("animar_fondo")
 				setup.reiniciar()
