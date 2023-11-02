@@ -114,7 +114,24 @@ class DragonRojo inherits Enemigo(
 		"dragonrojo/DragonRojo-5.png",
 		"dragonrojo/DragonRojo-6.png",
 		"dragonrojo/DragonRojo-7.png",
-		"dragonrojo/DragonRojo-8.png"
+		"dragonrojo/DragonRojo-8.png",
+		"dragonrojo/DragonRojo-9.png",
+		"dragonrojo/DragonRojo-10.png",
+		"dragonrojo/DragonRojo-11.png",
+		"dragonrojo/DragonRojo-12.png",
+		"dragonrojo/DragonRojo-13.png",
+		"dragonrojo/DragonRojo-14.png",
+		"dragonrojo/DragonRojo-15.png",
+		"dragonrojo/DragonRojo-16.png",
+		"dragonrojo/DragonRojo-17.png",
+		"dragonrojo/DragonRojo-18.png",
+		"dragonrojo/DragonRojo-17.png",
+		"dragonrojo/DragonRojo-16.png",
+		"dragonrojo/DragonRojo-15.png",
+		"dragonrojo/DragonRojo-14.png",
+		"dragonrojo/DragonRojo-13.png",
+		"dragonrojo/DragonRojo-12.png"
+		
 	]),
 	vidas = 1,
 	valorPuntosEnemigo = 10
