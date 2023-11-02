@@ -27,7 +27,13 @@ object nave {
 	])
 
 	var property image = "nave1.png"
-
+	
+	method spawn() {
+		game.addVisual(self)
+		self.moverse()
+    	keyboard.space().onPressDo{self.disparar()}
+	}
+	
 	method moverse() {
 		keyboard.a().onPressDo({ 
 			if(position.x() >= 1 ) self.position(position.left(1))

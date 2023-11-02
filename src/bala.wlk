@@ -34,7 +34,7 @@ class Disparo {
 	
 	method sufrirDanio(_danio) {}
 	
-	method mover(){
+	method moverse(){
 		self.position(position.up(direccion))
 	}
 	

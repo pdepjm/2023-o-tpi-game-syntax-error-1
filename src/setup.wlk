@@ -32,9 +32,7 @@ object setup {
 	}
 	
 	method setupPlayer() {
-		game.addVisual(nave)
-		nave.moverse()
-    	keyboard.space().onPressDo{nave.disparar()}
+		nave.spawn()
 	}
 	
 	method setupEnemy() {
@@ -65,7 +63,7 @@ object setup {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
 					bala.eliminarDisparo() 
 				
-				bala.mover() 			
+				bala.moverse() 			
 			}
 		}})
 		game.onTick(50, "animar_bala", {
