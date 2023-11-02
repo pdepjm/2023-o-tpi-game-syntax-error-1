@@ -5,7 +5,10 @@
 - Coiman, Fernando Agustin
 - Del Rizzo, Valentín
 - Giachetta, Franco 
-- Yañez Romero, Diego 
+- Yañez Romero, Diego
+
+## Diagramas
+![image](assets/DiagramaEstatico.jpg)
 
 ## Capturas
 ![image](assets/game_start.png)
@@ -13,8 +16,6 @@
 ![image](assets/game_2.png)
 ![image](assets/game_3.png)
 ![image](assets/game_over.png)
-
-(agregar)
 
 ## Reglas de Juego / Instrucciones
 Nuestra version del arcade de 1982 para la consola Atari 2600.
