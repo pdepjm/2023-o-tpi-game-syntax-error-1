@@ -7,7 +7,7 @@ import finJuego.*
 import setup.*
 
 object nave {
-	var vidas = 2
+	var vidas = 3
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(imagenes=[
 		"explosion/Explosion-0.png",
@@ -32,6 +32,7 @@ object nave {
 		game.addVisual(self)
 		self.moverse()
     	keyboard.space().onPressDo{self.disparar()}
+    	game.addVisual(vidaActual)
 	}
 	
 	method moverse() {
@@ -54,6 +55,7 @@ object nave {
   			self.morir()
   		}else {
   			vidas = vidas - danio
+  			vidaActual.image(vidas)
   		}
   	}
     
@@ -63,8 +65,25 @@ object nave {
 	}
 	
 	method reiniciar(){
-		vidas = vidas + 2
+		vidas = vidas + 3
 		image = "nave1.png"
+		vidaActual.image(vidas)
 		self.position(game.at(game.width()/2,0))
 	}
+}
+
+object vidaActual {
+	var property image = "corazon/corazon-1.png"
+	var imagenes = [
+		"corazon/corazon-4.png",
+		"corazon/corazon-4.png",
+		"corazon/corazon-3.png",
+		"corazon/corazon-2.png",
+		"corazon/corazon-1.png"
+	]
+	var property position = game.at(0,12)
+	
+	method image(vidas){
+		image = imagenes.get(vidas + 1)
+	} 
 }

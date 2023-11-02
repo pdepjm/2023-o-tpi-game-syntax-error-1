@@ -118,7 +118,16 @@ class DragonRojo inherits Enemigo(
 	]),
 	vidas = 1,
 	valorPuntosEnemigo = 10
-){}
+){
+	override method atacar() {
+  		const vecAJugador = self.vectorAJugador()
+  		
+  		if(vecAJugador.x().abs() <= 10) {
+			  const disparo = new DisparoPotente(position = position.down(1), direccion = -1)
+			  disparo.spawn()
+		  }
+  	}
+}
 
 class Terodactilo inherits Enemigo(
 	image = "terodactilo/Terodactilo-1.png",
@@ -218,4 +227,50 @@ class PajarosVerdes inherits Enemigo(
 		
 		self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 	}
+}
+	class Cruz inherits Enemigo(
+	image = "cruz/Cruz-1.png",
+	animador = new Animador(imagenes = [
+		"cruz/Cruz-1.png",
+		"cruz/Cruz-2.png",
+		"cruz/Cruz-3.png",
+		"cruz/Cruz-4.png",
+		"cruz/Cruz-5.png"
+	]),
+	vidas = 1,
+	valorPuntosEnemigo = 40
+){
+	var inmolacion = false
+	override method spawn() {
+		super()
+		game.onCollideDo(self, { visual =>
+			if(visual.equals(nave)) {
+				nave.sufrirDanio(2)
+				self.morir(false)
+			}
+		})
+		game.schedule(2000,{inmolacion = true})
+	}
+	
+	override method atacar() {}
+	
+	override method moverse() {
+		var vecAJugador = self.vectorAJugador()
+		const direccion = [
+			position.right(1),
+			position.left(1),
+			position.down(1)
+		]
+		if(inmolacion){
+			self.position(position.down(2))
+		}else{
+			self.position(direccion.anyOne())
+		}
+		self.evitarLimites()
+		if(vecAJugador.y().abs() <= 1 or 
+			position.x()<=0 or 
+			position.x()>=game.width()
+		) self.morir(false)
+	}
+
 }
