@@ -60,7 +60,7 @@ object setup {
 	}
 	
 	method setupBala() {
-		game.onTick(25,"moverBala", {disparos.forEach{bala => 
+		game.onTick(110,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
 					bala.eliminarDisparo() 
@@ -68,6 +68,9 @@ object setup {
 				bala.mover() 			
 			}
 		}})
+		game.onTick(50, "animar_bala", {
+		disparos.forEach({bala => bala.animador().animar(bala)})
+		})
 	}
 	
 	method reiniciar(){

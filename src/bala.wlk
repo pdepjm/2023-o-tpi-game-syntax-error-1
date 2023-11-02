@@ -2,12 +2,21 @@ import wollok.game.*
 import nave.*
 import enemigo.*
 import setup.*
+import animador.*
 
 class Disparo {
 	var property position
-	const property image = "balaA.png"
+	var property image = "balas/balaV4-1.png"
+	const animador = new Animador (imagenes = [
+		"balas/balaV4-1.png",
+		"balas/balaV4-2.png",
+		"balas/balaV4-3.png",
+		"balas/balaV4-4.png"
+	])
 	var direccion
 	var danio = 1
+	
+	method animador() = animador
 	
 	method spawn() {
 		game.addVisual(self)
@@ -37,11 +46,43 @@ class Disparo {
 	}
 }
 
-class DisparoPotente inherits Disparo(image= "balas/balaV1-1.png", danio= 2) {}
 
-class DisparoDivididoClase inherits Disparo(image= "balas/balaV3-1.png") {}
+class DisparoPotente inherits Disparo(image= "balas/balaV1-1.png",
+	animador = new Animador(imagenes = [
+		"balas/balaV1-1.png",
+		"balas/balaV1-2.png",
+		"balas/balaV1-3.png",
+		"balas/balaV1-4.png"
+	]),
+	danio= 2
+) {}
 
-class DisparoDividido inherits Disparo(image= "balas/balaV3-1.png") {
+class DisparoDoble inherits Disparo(image= "balas/balaV2-1.png",
+	animador = new Animador(imagenes = [
+		"balas/balaV2-1.png",
+		"balas/balaV2-2.png",
+		"balas/balaV2-3.png",
+		"balas/balaV2-4.png"
+	]),
+	danio= 1
+) {
+	override method habilidad() {
+		game.schedule(110,{
+			  	const disparo = new DisparoDobleClase(position = position.down(1), direccion = -1)
+			  	disparo.spawn()
+			  })
+	}
+}
+
+class DisparoDividido inherits Disparo(image= "balas/balaV3-1.png",
+		animador = new Animador(imagenes = [
+		"balas/balaV3-1.png",
+		"balas/balaV3-2.png",
+		"balas/balaV3-3.png",
+		"balas/balaV3-4.png",
+		"balas/balaV3-5.png"
+	])
+) {
 	override method habilidad() {
 		const disparoIzq = new DisparoDivididoClase(position= self.position().left(1), direccion= direccion)
 		const disparoDer = new DisparoDivididoClase(position= self.position().right(1), direccion= direccion)
@@ -50,3 +91,19 @@ class DisparoDividido inherits Disparo(image= "balas/balaV3-1.png") {
 		disparoDer.spawn()
 	}
 }
+
+class DisparoDobleClase inherits Disparo(image= "balas/balaV2-1.png",
+		animador = new Animador(imagenes = [
+		"balas/balaV2-1.png",
+		"balas/balaV2-2.png",
+		"balas/balaV2-3.png",
+		"balas/balaV2-4.png"
+	])) {}
+class DisparoDivididoClase inherits Disparo(image= "balas/balaV3-1.png",
+		animador = new Animador(imagenes = [
+		"balas/balaV3-1.png",
+		"balas/balaV3-2.png",
+		"balas/balaV3-3.png",
+		"balas/balaV3-4.png",
+		"balas/balaV3-5.png"
+	])) {}

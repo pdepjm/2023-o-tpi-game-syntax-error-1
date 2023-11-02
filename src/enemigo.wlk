@@ -140,7 +140,16 @@ class Terodactilo inherits Enemigo(
 	]),
 	vidas = 3,
 	valorPuntosEnemigo = 35
-){}
+){
+	override method atacar() {
+  		const vecAJugador = self.vectorAJugador()
+  		
+  		if(vecAJugador.x().abs() <= 10) {
+			  const disparo = new DisparoDoble(position = position.down(1), direccion = -1)
+			  disparo.spawn()
+		  }
+  	}
+}
 
 class Moluscocerebro inherits Enemigo(
 	image = "moluscocerebro/MoluscoCerebro-1.png",
