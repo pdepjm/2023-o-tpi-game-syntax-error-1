@@ -12,7 +12,7 @@ class Enemigo {
 	var property position
 	
 	method valorPuntosEnemigo() = valorPuntosEnemigo
-	
+
 	method animar() { animador.animar(self) }
 	
 	method vectorAJugador() {
@@ -21,6 +21,8 @@ class Enemigo {
 		
 		return new Position(x=dirX, y=dirY)
 	}
+	
+	method valorPuntosEnemigo() = valorPuntosEnemigo
 	
 	method spawn() {
 		game.addVisual(self)
@@ -49,6 +51,7 @@ class Enemigo {
 		
 		self.evitarLimites()
 	}
+	
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
@@ -76,20 +79,19 @@ class Enemigo {
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			  const disparo = new Disparo(position = position.down(1), direccion = -1)
-			  disparo.spawn()
+			  new Disparo(position = position.down(1), direccion = -1).spawn()
 		  }
   	}
   	
 	method sufrirDanio(danio) {
   		if(vidas == 0) {
-  			nave.matarEnemigo(self)
+  			nave.matar(self)
   		}else {
   			vidas = vidas - danio
   		}
   	}
 
-	method morir(porNave) {
+	method morir() {
 		animador.fuente("nubeverde/ExplosionVerde-")
 		animador.cantidad(7)
 		animador.extension(".png")
@@ -124,9 +126,8 @@ class Terodactilo inherits Enemigo(
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			  const disparo = new DisparoDoble(position = position.down(1), direccion = -1)
-			  disparo.spawn()
-		  }
+			new DisparoDoble(position = position.down(1), direccion = -1).spawn()
+		}
   	}
 }
 
@@ -140,9 +141,8 @@ class Moluscocerebro inherits Enemigo(
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			  const disparo = new DisparoDividido(position = position.down(1), direccion = -1)
-			  disparo.spawn()
-		  }
+			  new DisparoDividido(position = position.down(1), direccion = -1).spawn()
+		}
   	}
 }
 
@@ -169,6 +169,7 @@ class PajarosVerdes inherits Enemigo(
 		self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 	}
 }
+
 class Cruz inherits Enemigo(
 	image = "cruz/Cruz-1.png",
 	animador = new Animador(fuente="cruz/Cruz-",cantidad=5,extension=".png"),
@@ -184,7 +185,7 @@ class Cruz inherits Enemigo(
 				self.morir()
 			}
 		})
-		game.schedule(2000,{inmolacion = true})
+		game.schedule(2000,{ inmolacion = true })
 	}
 	
 	override method atacar() {}

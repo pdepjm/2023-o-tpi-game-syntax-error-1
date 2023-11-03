@@ -16,6 +16,7 @@ object setup {
 		disparos.remove(disparo)
 	}
 	
+	method enemigos() = enemigos
 	method aniadirEnemigos(enemigo) {
 		enemigos.add(enemigo)
 	}
@@ -31,11 +32,11 @@ object setup {
 		game.boardGround("fondo.png")
 	}
 	
-	method setupPlayer() {
+	method setupJugador() {
 		nave.spawn()
 	}
 	
-	method setupEnemy() {
+	method setupEnemigo(intervalo) {
 		const invoc_enemigos = [
 			{new DragonRojo(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Moluscocerebro(position=self.randomPos(0.1,0.9,0.70,0.45))},
@@ -43,22 +44,19 @@ object setup {
 			{new Cruz(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Terodactilo(position=self.randomPos(0.1,0.9,0.70,0.45))}
 		]
-		game.onTick(3500, "invocar_enemigo", {
-			const enemigo = invoc_enemigos.anyOne().apply()
-			enemigo.spawn()
+
+		game.onTick(intervalo, "invocar_enemigo", {
+			invoc_enemigos.anyOne().apply().spawn()
 		})
 		game.onTick(750, "mover_enemigo",{
 			enemigos.forEach({enemigo => enemigo.moverse()})	
 		})
-		game.onTick(150, "animar_enemigo", {
-			enemigos.forEach({enemigo => enemigo.animar()})
-		})
+	}
+	
+	method setupDisparos() {
 		game.onTick(2000, "disparar_enemigo", {
 			enemigos.forEach({enemigo => enemigo.atacar()})
 		})
-	}
-	
-	method setupBala() {
 		game.onTick(110,"moverBala", {disparos.forEach{bala => 
 			if(!disparos.isEmpty()) {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
@@ -67,8 +65,14 @@ object setup {
 				bala.moverse() 			
 			}
 		}})
+	}
+	
+	method setupAnimacion() {
+		game.onTick(150, "animar_enemigo", {
+			enemigos.forEach({enemigo => enemigo.animar()})
+		})
 		game.onTick(50, "animar_bala", {
-		disparos.forEach({bala => bala.animar()})
+			disparos.forEach({bala => bala.animar()})
 		})
 	}
 	
@@ -82,7 +86,6 @@ object setup {
 		enemigos.clear()
 		disparos.clear()
 	}
-	
 	
 	// devuelve una posicion random dentro de los límites establecidos
 	method randomPos(limInicioX, limFinalX, limInicioY, limFinalY) {
