@@ -11,7 +11,6 @@ object nave {
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(fuente="explosion/Explosion-",cantidad=12,extension=".png")
 	var disparoDisponible = true
-	
 	var property image = "nave1.png"
 	
 	method spawn() {
@@ -20,7 +19,7 @@ object nave {
     	keyboard.space().onPressDo{ self.disparar() }
     	game.addVisual(vidaActual)
 	}
-
+	
 	method moverse() {
 		keyboard.a().onPressDo({ 
 			if(position.x() >= 1 ) self.position(position.left(1))
@@ -31,13 +30,14 @@ object nave {
 	}
   		
   	method disparar(){
+
   		if(disparoDisponible) {
   			disparoDisponible = false
 	  		new Disparo( position = self.position().up(1), direccion = 1).spawn()
 		  	soundProducer.sound("disparo.wav").play()
 		  	
 		  	game.schedule(250, {disparoDisponible = true})
-		}					
+		  }					
   	}
   	
   	method matar(enemigo) {
@@ -52,6 +52,11 @@ object nave {
   			vidas = vidas - danio
   			vidaActual.image(vidas)
   		}
+  	}
+  	
+  	method matarEnemigo(enemigo) {
+  		enemigo.morir()
+  		puntaje.puntaje(enemigo.valorPuntosEnemigo())
   	}
     
 	method morir() {

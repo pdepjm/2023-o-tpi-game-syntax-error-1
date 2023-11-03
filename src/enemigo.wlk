@@ -11,6 +11,8 @@ class Enemigo {
 	var property image 
 	var property position
 	
+	method valorPuntosEnemigo() = valorPuntosEnemigo
+
 	method animar() { animador.animar(self) }
 	
 	method vectorAJugador() {
@@ -103,7 +105,16 @@ class DragonRojo inherits Enemigo(
 	animador = new Animador(fuente="dragonrojo/DragonRojo-",cantidad=7,extension=".png"),
 	vidas = 1,
 	valorPuntosEnemigo = 10
-){}
+){
+	override method atacar() {
+  		const vecAJugador = self.vectorAJugador()
+  		
+  		if(vecAJugador.x().abs() <= 10) {
+			  const disparo = new DisparoPotente(position = position.down(1), direccion = -1)
+			  disparo.spawn()
+		  }
+  	}
+}
 
 class Terodactilo inherits Enemigo(
 	image = "terodactilo/Terodactilo-0.png",

@@ -16,13 +16,13 @@ object finJuego {
 	method finDeJuego() {
 		puntaje.position(game.center())
 		game.schedule(3000, {
-			setup.gameClear()
-			game.addVisual(self)
-			game.onTick(150,"animar_final",{ self.animar() })
-			keyboard.r().onPressDo({
-				game.clear()
-				setup.reiniciar()
-				pulsarParaIniciar.iniciar()
+			  setup.gameClear()
+			  game.addVisual(self)
+			  game.onTick(150,"animar_final",{ self.animar() })
+			  keyboard.r().onPressDo({
+				  game.clear()
+				  setup.reiniciar()
+				  pulsarParaIniciar.iniciar()
 			})
 		})
 	}

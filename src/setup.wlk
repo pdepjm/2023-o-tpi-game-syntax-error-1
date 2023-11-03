@@ -44,6 +44,7 @@ object setup {
 			{new Cruz(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Terodactilo(position=self.randomPos(0.1,0.9,0.70,0.45))}
 		]
+
 		game.onTick(intervalo, "invocar_enemigo", {
 			invoc_enemigos.anyOne().apply().spawn()
 		})
@@ -61,7 +62,7 @@ object setup {
 				if(bala.position().y() >= game.height()*0.7 or bala.position().y() <= 0) 
 					bala.eliminarDisparo() 
 				
-				bala.mover() 			
+				bala.moverse() 			
 			}
 		}})
 	}
