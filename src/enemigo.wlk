@@ -87,22 +87,25 @@ class Enemigo {
   	}
 
 	method morir(porNave) {
-		animador = new Animador(direccion="nubeverde/ExplosionVerde-",cantidad=7,extension=".png")
+		animador.fuente("nubeverde/ExplosionVerde-")
+		animador.cantidad(7)
+		animador.extension(".png")
 		if(porNave) puntaje.puntaje(valorPuntosEnemigo)
-		animador.animarMuerteEnemigoyRemover(self)
+		setup.removerEnemigos(self)
+		animador.animarYRemover(self)
 	}
 }
 
 class DragonRojo inherits Enemigo(
 	image = "dragonrojo/DragonRojo-0.png",
-	animador = new Animador(direccion="dragonrojo/DragonRojo-",cantidad=7,extension=".png"),
+	animador = new Animador(fuente="dragonrojo/DragonRojo-",cantidad=7,extension=".png"),
 	vidas = 1,
 	valorPuntosEnemigo = 10
 ){}
 
 class Terodactilo inherits Enemigo(
 	image = "terodactilo/Terodactilo-0.png",
-	animador = new Animador(direccion="terodactilo/Terodactilo-",cantidad =13,extension=".png"),
+	animador = new Animador(fuente="terodactilo/Terodactilo-",cantidad =13,extension=".png"),
 	vidas = 3,
 	valorPuntosEnemigo = 35
 ){
@@ -118,7 +121,7 @@ class Terodactilo inherits Enemigo(
 
 class Moluscocerebro inherits Enemigo(
 	image = "moluscocerebro/MoluscoCerebro-0.png",
-	animador = new Animador(direccion="moluscocerebro/MoluscoCerebro-",cantidad = 3,extension=".png"),
+	animador = new Animador(fuente="moluscocerebro/MoluscoCerebro-",cantidad = 3,extension=".png"),
 	vidas = 2,
 	valorPuntosEnemigo = 50
 ){
@@ -134,7 +137,7 @@ class Moluscocerebro inherits Enemigo(
 
 class PajarosVerdes inherits Enemigo(
 	image = "pajarosverdes/PajaroVerde-0.png",
-	animador = new Animador(direccion="pajarosverdes/PajaroVerde-",cantidad=22,extension=".png"),
+	animador = new Animador(fuente="pajarosverdes/PajaroVerde-",cantidad=22,extension=".png"),
 	vidas = 5 , valorPuntosEnemigo = 100)
 {
 	override method spawn() {
@@ -157,7 +160,7 @@ class PajarosVerdes inherits Enemigo(
 }
 class Cruz inherits Enemigo(
 	image = "cruz/Cruz-1.png",
-	animador = new Animador(direccion="cruz/Cruz-",cantidad=5,extension=".png"),
+	animador = new Animador(fuente="cruz/Cruz-",cantidad=5,extension=".png"),
 	vidas = 1,
 	valorPuntosEnemigo = 40
 ){

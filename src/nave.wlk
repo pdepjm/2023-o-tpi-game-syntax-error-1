@@ -9,7 +9,7 @@ import setup.*
 object nave {
 	var vidas = 3
 	var property position = game.at(game.width()/2,0)
-	const animador = new Animador(direccion="explosion/Explosion-",cantidad=12,extension=".png")
+	const animador = new Animador(fuente="explosion/Explosion-",cantidad=12,extension=".png")
 
 	var property image = "nave1.png"
 	method spawn() {
@@ -44,7 +44,10 @@ object nave {
   	}
     
 	method morir() {
-		animador.animarMuerteNaveyRemover(self)
+		animador.fuente("explosion/Explosion-")
+		animador.cantidad(8)
+		animador.extension(".png")
+		animador.animarYRemover(self)
 		finJuego.finDeJuego()
 	}
 	

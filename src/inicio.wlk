@@ -10,7 +10,7 @@ object pulsarParaIniciar {
 	var property position = game.at(0,0)
 	var property image = "fondoanimado/Fondo/fondo0.gif"
 	
-	const animador = new Animador (direccion="fondoanimado/Fondo/fondo", cantidad =59,extension=".gif")
+	const animador = new Animador (fuente="fondoanimado/Fondo/fondo", cantidad =59,extension=".gif")
 	var property enemigos = []
 	method animar() = animador
 	

@@ -9,7 +9,7 @@ import sonido.*
 object finJuego {
 	var property position = game.at(0,0)
 	var property image = "fondoanimado/FondoGAMEOVER/gameover0.gif"
-	const animador = new Animador (direccion="fondoanimado/FondoGAMEOVER/gameover", cantidad =23,extension=".gif")
+	const animador = new Animador (fuente="fondoanimado/FondoGAMEOVER/gameover", cantidad =23,extension=".gif")
 	method animador()=animador
 	method finDeJuego() {
 		puntaje.position(game.center())

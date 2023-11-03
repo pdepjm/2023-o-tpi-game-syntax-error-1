@@ -2,45 +2,38 @@ import wollok.game.*
 import setup.*
 
 class Animador {
-	var direccion 
+	var fuente 
 	var index = 0
 	var cantidad
 	var extension
 	
+	method fuente(nuevaFuente) { fuente = nuevaFuente }
+	method cantidad(nuevaCantidad) { cantidad = nuevaCantidad }
+	method extension(nuevaExtension) { extension = nuevaExtension }
 	
 	method animar(objeto) {
-			objeto.image(direccion + self.siguiente()+ extension)
-	}
-	method animarMuerteEnemigoyRemover(objeto){
-		direccion = "nubeverde/ExplosionVerde-"
-		cantidad = 8
-		extension = ".png"
-		game.onTick(150,"muerte_enemigo",{self.animar(objeto)
-			game.schedule(700,{if(game.hasVisual(objeto)){
-				game.removeVisual(objeto) game.removeTickEvent("muerte_enemigo") setup.removerEnemigos(objeto)
-			}})
-		})
-	
+			objeto.image(fuente + self.siguiente()+ extension)
 	}
 	
-	method animarMuerteNaveyRemover(objeto){
-		direccion = "explosion/Explosion-"
-		cantidad = 8
-		extension = ".png"
-		game.onTick(150,"muerte_nave",{self.animar(objeto)
-			game.schedule(700,{if(game.hasVisual(objeto)){
-				game.removeVisual(objeto) game.removeTickEvent("muerte_nave") 
-			}})
+	method animarYRemover(objeto) {
+		var vez = 0
+		game.onTick(125, "muerte_enemigo", {
+			self.animar(objeto)
+			if(vez >= cantidad){
+				if(game.hasVisual(objeto)) game.removeVisual(objeto)
+				game.removeTickEvent("muerte_enemigo")
+			}
+			vez = vez + 1		
 		})
 	}
 
 	method siguiente(){
-		if (index<cantidad){
+		if (index < cantidad){
 			index = index + 1
 			return index
-			}
-			index=0
-			return index
+		}
+		index=0
+		return index
 	}
 	
  }
