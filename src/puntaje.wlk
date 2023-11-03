@@ -6,7 +6,7 @@ object puntaje {
 	method text() = puntaje.toString()
 	method textColor() = "00FF00FF"
 	
-	method puntaje(puntajeAgregado){puntaje = puntaje+puntajeAgregado}
+	method puntaje(puntajeAgregado){ puntaje = puntaje + puntajeAgregado }
 	
 	method reiniciar(){
 		puntaje = 0

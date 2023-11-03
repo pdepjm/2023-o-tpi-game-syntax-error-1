@@ -10,7 +10,8 @@ class Enemigo {
 	var vidas 
 	var property image 
 	var property position
-	method animador() = animador
+	
+	method animar() { animador.animar(self) }
 	
 	method vectorAJugador() {
 		const dirX = nave.position().x() - self.position().x()
@@ -18,6 +19,8 @@ class Enemigo {
 		
 		return new Position(x=dirX, y=dirY)
 	}
+	
+	method valorPuntosEnemigo() = valorPuntosEnemigo
 	
 	method spawn() {
 		game.addVisual(self)
@@ -42,7 +45,7 @@ class Enemigo {
 		}else {
 			self.position(direccion.anyOne())
 		}
-		if(vecAJugador.y().abs() <= 1) self.morir(false)
+		if(vecAJugador.y().abs() <= 1) self.morir()
 		
 		self.evitarLimites()
 	}
@@ -73,24 +76,22 @@ class Enemigo {
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			  const disparo = new Disparo(position = position.down(1), direccion = -1)
-			  disparo.spawn()
+			  new Disparo(position = position.down(1), direccion = -1).spawn()
 		  }
   	}
   	
 	method sufrirDanio(danio) {
   		if(vidas == 0) {
-  			self.morir(true)
+  			nave.matar(self)
   		}else {
   			vidas = vidas - danio
   		}
   	}
 
-	method morir(porNave) {
+	method morir() {
 		animador.fuente("nubeverde/ExplosionVerde-")
 		animador.cantidad(7)
 		animador.extension(".png")
-		if(porNave) puntaje.puntaje(valorPuntosEnemigo)
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
@@ -113,9 +114,8 @@ class Terodactilo inherits Enemigo(
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			  const disparo = new DisparoDoble(position = position.down(1), direccion = -1)
-			  disparo.spawn()
-		  }
+			new DisparoDoble(position = position.down(1), direccion = -1).spawn()
+		}
   	}
 }
 
@@ -129,9 +129,8 @@ class Moluscocerebro inherits Enemigo(
   		const vecAJugador = self.vectorAJugador()
   		
   		if(vecAJugador.x().abs() <= 10) {
-			  const disparo = new DisparoDividido(position = position.down(1), direccion = -1)
-			  disparo.spawn()
-		  }
+			  new DisparoDividido(position = position.down(1), direccion = -1).spawn()
+		}
   	}
 }
 
@@ -145,7 +144,7 @@ class PajarosVerdes inherits Enemigo(
 		game.onCollideDo(self, { visual =>
 			if(visual.equals(nave)) {
 				nave.sufrirDanio(1)
-				self.morir(false)
+				self.morir()
 			}
 		})
 	}
@@ -170,10 +169,10 @@ class Cruz inherits Enemigo(
 		game.onCollideDo(self, { visual =>
 			if(visual.equals(nave)) {
 				nave.sufrirDanio(2)
-				self.morir(self)
+				self.morir()
 			}
 		})
-		game.schedule(2000,{inmolacion = true})
+		game.schedule(2000,{ inmolacion = true })
 	}
 	
 	override method atacar() {}
@@ -194,7 +193,7 @@ class Cruz inherits Enemigo(
 		if(vecAJugador.y().abs() <= 1 or 
 			position.x()<=0 or 
 			position.x()>=game.width()
-		) self.morir(self)
+		) self.morir()
 	}
 
 }

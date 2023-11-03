@@ -7,15 +7,17 @@ import finJuego.*
 import setup.*
 
 object nave {
-	var vidas = 3
+	var vidas = 2
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(fuente="explosion/Explosion-",cantidad=12,extension=".png")
-
+	var disparoDisponible = true
+	
 	var property image = "nave1.png"
+	
 	method spawn() {
 		game.addVisual(self)
 		self.moverse()
-    	keyboard.space().onPressDo{self.disparar()}
+    	keyboard.space().onPressDo{ self.disparar() }
     	game.addVisual(vidaActual)
 	}
 
@@ -28,10 +30,19 @@ object nave {
 		})
 	}
   		
-  	method disparar(){	
-	  		const disparo = new Disparo( position = self.position().up(1), direccion = 1)
-	  		disparo.spawn()
-		  	soundProducer.sound("disparo.wav").play()					
+  	method disparar(){
+  		if(disparoDisponible) {
+  			disparoDisponible = false
+	  		new Disparo( position = self.position().up(1), direccion = 1).spawn()
+		  	soundProducer.sound("disparo.wav").play()
+		  	
+		  	game.schedule(250, {disparoDisponible = true})
+		}					
+  	}
+  	
+  	method matar(enemigo) {
+  		puntaje.puntaje(enemigo.valorPuntosEnemigo())
+  		enemigo.morir()
   	}
     
   	method sufrirDanio(danio) {
@@ -52,12 +63,13 @@ object nave {
 	}
 	
 	method reiniciar(){
-		vidas = vidas + 3
+		vidas = vidas + 2
 		image = "nave1.png"
 		vidaActual.image(vidas)
 		self.position(game.at(game.width()/2,0))
 	}
 }
+
 object vidaActual {
 	var property image = "corazon/corazon-1.png"
 	const imagenes = [
@@ -66,9 +78,11 @@ object vidaActual {
 		"corazon/corazon-2.png",
 		"corazon/corazon-1.png"
 	]
-	var property position = game.at(0,12)
+	const position = game.at(0,12)
+	
+	method position() = position
 	
 	method image(vidas){
-		image = imagenes.get(vidas + 1)
+		image = imagenes.get(vidas)
 	} 
 }

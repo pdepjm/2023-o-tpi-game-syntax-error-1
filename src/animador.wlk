@@ -12,7 +12,7 @@ class Animador {
 	method extension(nuevaExtension) { extension = nuevaExtension }
 	
 	method animar(objeto) {
-			objeto.image(fuente + self.siguiente()+ extension)
+		objeto.image(fuente + self.siguiente() + extension)
 	}
 	
 	method animarYRemover(objeto) {
