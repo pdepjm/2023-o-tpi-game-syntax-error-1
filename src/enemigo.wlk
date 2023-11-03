@@ -22,8 +22,6 @@ class Enemigo {
 		return new Position(x=dirX, y=dirY)
 	}
 	
-	method valorPuntosEnemigo() = valorPuntosEnemigo
-	
 	method spawn() {
 		game.addVisual(self)
 		setup.aniadirEnemigos(self)
