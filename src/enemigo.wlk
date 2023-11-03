@@ -5,7 +5,7 @@ import animador.*
 import setup.*
 import puntaje.*
 class Enemigo {
-	const animador 
+	var animador  
 	const valorPuntosEnemigo
 	var vidas 
 	var property image 
@@ -89,52 +89,18 @@ class Enemigo {
   		}
   	}
 
-	method morir() {
-		animador.imagenes([
-			"nubeverde/ExplosionVerde-0.png",
-			"nubeverde/ExplosionVerde-1.png",
-			"nubeverde/ExplosionVerde-2.png",
-			"nubeverde/ExplosionVerde-3.png",
-			"nubeverde/ExplosionVerde-4.png",
-			"nubeverde/ExplosionVerde-5.png",
-			"nubeverde/ExplosionVerde-6.png",
-			"nubeverde/ExplosionVerde-7.png",
-			"nubeverde/ExplosionVerde-8.png"
-		])
+	method morir(porNave) {
+		animador.fuente("nubeverde/ExplosionVerde-")
+		animador.cantidad(7)
+		animador.extension(".png")
 		setup.removerEnemigos(self)
 		animador.animarYRemover(self)
 	}
 }
 
 class DragonRojo inherits Enemigo(
-	image = "dragonrojo/DragonRojo-1.png",
-	animador = new Animador(imagenes = [
-		"dragonrojo/DragonRojo-1.png",
-		"dragonrojo/DragonRojo-2.png",
-		"dragonrojo/DragonRojo-3.png",
-		"dragonrojo/DragonRojo-4.png",
-		"dragonrojo/DragonRojo-5.png",
-		"dragonrojo/DragonRojo-6.png",
-		"dragonrojo/DragonRojo-7.png",
-		"dragonrojo/DragonRojo-8.png",
-		"dragonrojo/DragonRojo-9.png",
-		"dragonrojo/DragonRojo-10.png",
-		"dragonrojo/DragonRojo-11.png",
-		"dragonrojo/DragonRojo-12.png",
-		"dragonrojo/DragonRojo-13.png",
-		"dragonrojo/DragonRojo-14.png",
-		"dragonrojo/DragonRojo-15.png",
-		"dragonrojo/DragonRojo-16.png",
-		"dragonrojo/DragonRojo-17.png",
-		"dragonrojo/DragonRojo-18.png",
-		"dragonrojo/DragonRojo-17.png",
-		"dragonrojo/DragonRojo-16.png",
-		"dragonrojo/DragonRojo-15.png",
-		"dragonrojo/DragonRojo-14.png",
-		"dragonrojo/DragonRojo-13.png",
-		"dragonrojo/DragonRojo-12.png"
-		
-	]),
+	image = "dragonrojo/DragonRojo-0.png",
+	animador = new Animador(fuente="dragonrojo/DragonRojo-",cantidad=7,extension=".png"),
 	vidas = 1,
 	valorPuntosEnemigo = 10
 ){
@@ -149,23 +115,8 @@ class DragonRojo inherits Enemigo(
 }
 
 class Terodactilo inherits Enemigo(
-	image = "terodactilo/Terodactilo-1.png",
-	animador = new Animador(imagenes = [
-		"terodactilo/Terodactilo-1.png",
-		"terodactilo/Terodactilo-2.png",
-		"terodactilo/Terodactilo-3.png",
-		"terodactilo/Terodactilo-4.png",
-		"terodactilo/Terodactilo-5.png",
-		"terodactilo/Terodactilo-6.png",
-		"terodactilo/Terodactilo-7.png",
-		"terodactilo/Terodactilo-8.png",
-		"terodactilo/Terodactilo-9.png",
-		"terodactilo/Terodactilo-10.png",
-		"terodactilo/Terodactilo-11.png",
-		"terodactilo/Terodactilo-12.png",
-		"terodactilo/Terodactilo-13.png",
-		"terodactilo/Terodactilo-14.png"
-	]),
+	image = "terodactilo/Terodactilo-0.png",
+	animador = new Animador(fuente="terodactilo/Terodactilo-",cantidad =13,extension=".png"),
 	vidas = 3,
 	valorPuntosEnemigo = 35
 ){
@@ -180,13 +131,8 @@ class Terodactilo inherits Enemigo(
 }
 
 class Moluscocerebro inherits Enemigo(
-	image = "moluscocerebro/MoluscoCerebro-1.png",
-	animador = new Animador(imagenes = [
-		"moluscocerebro/MoluscoCerebro-1.png",
-		"moluscocerebro/MoluscoCerebro-2.png",
-		"moluscocerebro/MoluscoCerebro-3.png",
-		"moluscocerebro/MoluscoCerebro-4.png"
-	]),
+	image = "moluscocerebro/MoluscoCerebro-0.png",
+	animador = new Animador(fuente="moluscocerebro/MoluscoCerebro-",cantidad = 3,extension=".png"),
 	vidas = 2,
 	valorPuntosEnemigo = 50
 ){
@@ -201,32 +147,8 @@ class Moluscocerebro inherits Enemigo(
 }
 
 class PajarosVerdes inherits Enemigo(
-	image = "pajarosverdes/PajaroVerde-1.png",
-	animador = new Animador(imagenes = [
-		"pajarosverdes/PajaroVerde-1.png",
-		"pajarosverdes/PajaroVerde-2.png",
-		"pajarosverdes/PajaroVerde-3.png",
-		"pajarosverdes/PajaroVerde-4.png",
-		"pajarosverdes/PajaroVerde-5.png",
-		"pajarosverdes/PajaroVerde-6.png",
-		"pajarosverdes/PajaroVerde-7.png",
-		"pajarosverdes/PajaroVerde-8.png",
-		"pajarosverdes/PajaroVerde-9.png",
-		"pajarosverdes/PajaroVerde-10.png",
-		"pajarosverdes/PajaroVerde-11.png",
-		"pajarosverdes/PajaroVerde-12.png",
-		"pajarosverdes/PajaroVerde-13.png",
-		"pajarosverdes/PajaroVerde-14.png",
-		"pajarosverdes/PajaroVerde-15.png",
-		"pajarosverdes/PajaroVerde-16.png",
-		"pajarosverdes/PajaroVerde-17.png",
-		"pajarosverdes/PajaroVerde-18.png",
-		"pajarosverdes/PajaroVerde-19.png",
-		"pajarosverdes/PajaroVerde-20.png",
-		"pajarosverdes/PajaroVerde-21.png",
-		"pajarosverdes/PajaroVerde-22.png",
-		"pajarosverdes/PajaroVerde-23.png"
-	]),
+	image = "pajarosverdes/PajaroVerde-0.png",
+	animador = new Animador(fuente="pajarosverdes/PajaroVerde-",cantidad=22,extension=".png"),
 	vidas = 5 , valorPuntosEnemigo = 100)
 {
 	override method spawn() {
@@ -247,15 +169,9 @@ class PajarosVerdes inherits Enemigo(
 		self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 	}
 }
-	class Cruz inherits Enemigo(
+class Cruz inherits Enemigo(
 	image = "cruz/Cruz-1.png",
-	animador = new Animador(imagenes = [
-		"cruz/Cruz-1.png",
-		"cruz/Cruz-2.png",
-		"cruz/Cruz-3.png",
-		"cruz/Cruz-4.png",
-		"cruz/Cruz-5.png"
-	]),
+	animador = new Animador(fuente="cruz/Cruz-",cantidad=5,extension=".png"),
 	vidas = 1,
 	valorPuntosEnemigo = 40
 ){
@@ -274,7 +190,7 @@ class PajarosVerdes inherits Enemigo(
 	override method atacar() {}
 	
 	override method moverse() {
-		var vecAJugador = self.vectorAJugador()
+		const vecAJugador = self.vectorAJugador()
 		const direccion = [
 			position.right(1),
 			position.left(1),

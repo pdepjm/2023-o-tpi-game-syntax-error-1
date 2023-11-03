@@ -6,15 +6,10 @@ import animador.*
 
 class Disparo {
 	var property position
-	var property image = "balas/balaV4-1.png"
-	const animador = new Animador (imagenes = [
-		"balas/balaV4-1.png",
-		"balas/balaV4-2.png",
-		"balas/balaV4-3.png",
-		"balas/balaV4-4.png"
-	])
+	var property image = "balas/balaV4-0.png"
+	const animador = new Animador (fuente="balas/balaV4-",cantidad=3,extension=".png")
 	var direccion
-	var danio = 1
+	const danio = 1
 	
 	method animar() { animador.animar(self) }
 	
@@ -47,41 +42,25 @@ class Disparo {
 }
 
 
-class DisparoPotente inherits Disparo(image= "balas/balaV1-1.png",
-	animador = new Animador(imagenes = [
-		"balas/balaV1-1.png",
-		"balas/balaV1-2.png",
-		"balas/balaV1-3.png",
-		"balas/balaV1-4.png"
-	]),
+class DisparoPotente inherits Disparo(image= "balas/balaV1-0.png",
+	animador = new Animador(fuente="balas/balaV1-",cantidad=3,extension=".png"),
 	danio= 2
 ) {}
 
-class DisparoDoble inherits Disparo(image= "balas/balaV2-1.png",
-	animador = new Animador(imagenes = [
-		"balas/balaV2-1.png",
-		"balas/balaV2-2.png",
-		"balas/balaV2-3.png",
-		"balas/balaV2-4.png"
-	]),
+class DisparoDoble inherits Disparo(image= "balas/balaV2-0.png",
+	animador = new Animador(fuente="balas/balaV2-",cantidad=3,extension=".png"),
 	danio= 1
 ) {
 	override method habilidad() {
 		game.schedule(110,{
-			  	const disparo = new Disparo(position = position.down(1), direccion = -1, animador=animador)
-			  	disparo.spawn()
-			  })
+			const disparo = new Disparo(position = position.down(1), direccion = -1, animador=animador)
+			disparo.spawn()
+		})
 	}
 }
 
-class DisparoDividido inherits Disparo(image= "balas/balaV3-1.png",
-		animador = new Animador(imagenes = [
-		"balas/balaV3-1.png",
-		"balas/balaV3-2.png",
-		"balas/balaV3-3.png",
-		"balas/balaV3-4.png",
-		"balas/balaV3-5.png"
-	])
+class DisparoDividido inherits Disparo(image= "balas/balaV3-0.png",
+		animador = new Animador(fuente="balas/balaV3-",cantidad=4,extension=".png")
 ) {
 	override method habilidad() {
 		const disparoIzq = new Disparo(position= self.position().left(1), direccion= direccion, animador=animador)

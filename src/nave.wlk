@@ -9,22 +9,7 @@ import setup.*
 object nave {
 	var vidas = 3
 	var property position = game.at(game.width()/2,0)
-	const animador = new Animador(imagenes=[
-		"explosion/Explosion-0.png",
-		"explosion/Explosion-1.png",
-		"explosion/Explosion-2.png",
-		"explosion/Explosion-3.png",
-		"explosion/Explosion-4.png",
-		"explosion/Explosion-5.png",
-		"explosion/Explosion-6.png",
-		"explosion/Explosion-7.png",
-		"explosion/Explosion-8.png",
-		"explosion/Explosion-9.png",
-		"explosion/Explosion-10.png",
-		"explosion/Explosion-11.png",
-		"explosion/Explosion-12.png",
-		"explosion/Explosion-13.png"
-	])
+	const animador = new Animador(fuente="explosion/Explosion-",cantidad=12,extension=".png")
 
 	var property image = "nave1.png"
 	var balaDisponible = true
@@ -71,6 +56,9 @@ object nave {
   	}
     
 	method morir() {
+		animador.fuente("explosion/Explosion-")
+		animador.cantidad(8)
+		animador.extension(".png")
 		animador.animarYRemover(self)
 		finJuego.finDeJuego()
 	}
@@ -82,11 +70,9 @@ object nave {
 		self.position(game.at(game.width()/2,0))
 	}
 }
-
 object vidaActual {
 	var property image = "corazon/corazon-1.png"
-	var imagenes = [
-		"corazon/corazon-4.png",
+	const imagenes = [
 		"corazon/corazon-4.png",
 		"corazon/corazon-3.png",
 		"corazon/corazon-2.png",
