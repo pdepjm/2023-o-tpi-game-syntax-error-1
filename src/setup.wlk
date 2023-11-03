@@ -32,9 +32,7 @@ object setup {
 	}
 	
 	method setupPlayer() {
-		game.addVisual(nave)
-		nave.moverse()
-    	keyboard.space().onPressDo{nave.disparar()}
+		nave.spawn()
 	}
 	
 	method setupEnemy() {
@@ -42,6 +40,7 @@ object setup {
 			{new DragonRojo(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Moluscocerebro(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new PajarosVerdes(position=self.randomPos(0.1,0.9,0.70,0.45))},
+			{new Cruz(position=self.randomPos(0.1,0.9,0.70,0.45))},
 			{new Terodactilo(position=self.randomPos(0.1,0.9,0.70,0.45))}
 		]
 		game.onTick(3000, "invocar_enemigo", {

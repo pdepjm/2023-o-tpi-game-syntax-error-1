@@ -4,21 +4,25 @@ import puntaje.*
 import animador.*
 import enemigo.*
 import nave.*
+import sonido.*
 
 object pulsarParaIniciar { 
 	var property position = game.at(0,0)
-	var property image = "fondoanimado/fondo00.gif"
-	const animador = new Animador (direccion="fondoanimado/fondo", cantidad =19,extension=".gif")
+	var property image = "fondoanimado/Fondo/fondo0.gif"
+	
+	const animador = new Animador (direccion="fondoanimado/Fondo/fondo", cantidad =59,extension=".gif")
 	var property enemigos = []
-	method animador()=animador
+	method animar() = animador
 	
 	method introduccion(){
-		game.onTick(100,"animar_fondo",{animador.animar(self)})
+		game.onTick(16.6, "animar_introduccion",{animador.animar(self)})
+		
 		
 		const invoc_enemigos = [
 			{new DragonRojo(position=setup.randomPos(0.1,0.9,0.70,0.45))},
 			{new Moluscocerebro(position=setup.randomPos(0.1,0.9,0.70,0.45))},
 			{new PajarosVerdes(position=setup.randomPos(0.1,0.9,0.70,0.45))},
+			{new Cruz(position=setup.randomPos(0.1,0.9,0.70,0.45))},
 			{new Terodactilo(position=setup.randomPos(0.1,0.9,0.70,0.45))}
 		]
 		game.onTick(1000, "invocar_y_morir", {
@@ -47,7 +51,7 @@ object pulsarParaIniciar {
 			game.addVisual(puntaje)
 			setup.setupPlayer()
 			setup.setupEnemy()
-			setup.setupBala()
+			setup.setupBala()		
 		})
 	}
 }

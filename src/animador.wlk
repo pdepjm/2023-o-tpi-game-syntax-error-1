@@ -1,4 +1,5 @@
 import wollok.game.*
+import setup.*
 
 class Animador {
 	var direccion 
@@ -8,21 +9,31 @@ class Animador {
 	
 	
 	method animar(objeto) {
-		objeto.image(direccion + self.siguiente()+ extension)
+			objeto.image(direccion + self.siguiente()+ extension)
+	}
+	method animarMuerteEnemigoyRemover(objeto){
+		direccion = "nubeverde/ExplosionVerde-"
+		cantidad = 8
+		extension = ".png"
+		game.onTick(150,"muerte_enemigo",{self.animar(objeto)
+			game.schedule(700,{if(game.hasVisual(objeto)){
+				game.removeVisual(objeto) game.removeTickEvent("muerte_enemigo") setup.removerEnemigos(objeto)
+			}})
+		})
+	
 	}
 	
-	method animarYRemover(objeto) {
-		if(objeto.image()=="nave1.png"){
-		direccion ="explosion/Explosion-"
-		}else direccion = "nubeverde/ExplosionVerde-"
-		var vez = 0
-		game.onTick(200,"animar_remover",{vez = vez + 1
-		objeto.image(direccion + self.siguiente()+ extension)
-		if( game.hasVisual(objeto) && vez==8){
-			game.removeVisual(objeto)
-		}
+	method animarMuerteNaveyRemover(objeto){
+		direccion = "explosion/Explosion-"
+		cantidad = 8
+		extension = ".png"
+		game.onTick(150,"muerte_nave",{self.animar(objeto)
+			game.schedule(700,{if(game.hasVisual(objeto)){
+				game.removeVisual(objeto) game.removeTickEvent("muerte_nave") 
+			}})
 		})
 	}
+
 	method siguiente(){
 		if (index<cantidad){
 			index = index + 1
@@ -32,14 +43,4 @@ class Animador {
 			return index
 	}
 	
-	//method siguiente() {
-	//	index = index + 1
-	//	try {
-	//		return imagenes.get(index) 	
-	//	}
-	//	catch error {
-	//		index = 0
-	//		return imagenes.get(index)
-	//	}		
-	//}
  }

@@ -5,7 +5,7 @@ import animador.*
 import setup.*
 import puntaje.*
 class Enemigo {
-	var animador 
+	var animador  
 	const valorPuntosEnemigo
 	var vidas 
 	var property image 
@@ -89,8 +89,7 @@ class Enemigo {
 	method morir(porNave) {
 		animador = new Animador(direccion="nubeverde/ExplosionVerde-",cantidad=7,extension=".png")
 		if(porNave) puntaje.puntaje(valorPuntosEnemigo)
-		setup.removerEnemigos(self)
-		animador.animarYRemover(self)
+		animador.animarMuerteEnemigoyRemover(self)
 	}
 }
 
@@ -155,4 +154,44 @@ class PajarosVerdes inherits Enemigo(
 		
 		self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 	}
+}
+class Cruz inherits Enemigo(
+	image = "cruz/Cruz-1.png",
+	animador = new Animador(direccion="cruz/Cruz-",cantidad=5,extension=".png"),
+	vidas = 1,
+	valorPuntosEnemigo = 40
+){
+	var inmolacion = false
+	override method spawn() {
+		super()
+		game.onCollideDo(self, { visual =>
+			if(visual.equals(nave)) {
+				nave.sufrirDanio(2)
+				self.morir(self)
+			}
+		})
+		game.schedule(2000,{inmolacion = true})
+	}
+	
+	override method atacar() {}
+	
+	override method moverse() {
+		const vecAJugador = self.vectorAJugador()
+		const direccion = [
+			position.right(1),
+			position.left(1),
+			position.down(1)
+		]
+		if(inmolacion){
+			self.position(position.down(2))
+		}else{
+			self.position(direccion.anyOne())
+		}
+		self.evitarLimites()
+		if(vecAJugador.y().abs() <= 1 or 
+			position.x()<=0 or 
+			position.x()>=game.width()
+		) self.morir(self)
+	}
+
 }

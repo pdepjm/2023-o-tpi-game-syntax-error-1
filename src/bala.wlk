@@ -9,7 +9,7 @@ class Disparo {
 	var property image = "balas/balaV4-0.png"
 	const animador = new Animador (direccion="balas/balaV4-",cantidad=3,extension=".png")
 	var direccion
-	var danio = 1
+	const danio = 1
 	
 	method animador() = animador
 	
@@ -53,7 +53,7 @@ class DisparoDoble inherits Disparo(image= "balas/balaV2-0.png",
 ) {
 	override method habilidad() {
 		game.schedule(110,{
-			  	const disparo = new DisparoDobleClase(position = position.down(1), direccion = -1)
+			  	const disparo = new Disparo(position = position.down(1), direccion = -1)
 			  	disparo.spawn()
 			  })
 	}
@@ -63,16 +63,10 @@ class DisparoDividido inherits Disparo(image= "balas/balaV3-0.png",
 		animador = new Animador(direccion="balas/balaV3-",cantidad=4,extension=".png")
 ) {
 	override method habilidad() {
-		const disparoIzq = new DisparoDivididoClase(position= self.position().left(1), direccion= direccion)
-		const disparoDer = new DisparoDivididoClase(position= self.position().right(1), direccion= direccion)
+		const disparoIzq = new Disparo(position= self.position().left(1), direccion= direccion)
+		const disparoDer = new Disparo(position= self.position().right(1), direccion= direccion)
 		
 		disparoIzq.spawn()
 		disparoDer.spawn()
 	}
 }
-
-class DisparoDobleClase inherits Disparo(image= "balas/balaV2-0.png",
-		animador = new Animador(direccion="balas/balaV2-",cantidad=3,extension=".png"))
-		 {}
-class DisparoDivididoClase inherits Disparo(image= "balas/balaV3-0.png",
-		animador = new Animador(direccion="balas/balaV3-",cantidad=4,extension=".png")) {}
