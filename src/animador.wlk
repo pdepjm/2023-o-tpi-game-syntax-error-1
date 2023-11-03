@@ -13,6 +13,7 @@ class Animador {
 	
 	method animar(objeto) {
 		objeto.image(fuente + self.siguiente() + extension)
+		
 	}
 	
 	method animarYRemover(objeto) {
@@ -28,11 +29,9 @@ class Animador {
 	}
 
 	method siguiente(){
-		if (index < cantidad){
-			index = index + 1
-			return index
-		}
-		index=0
+		if (index < cantidad) index = index + 1
+		else index = 0
+		
 		return index
 	}
 	

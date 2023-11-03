@@ -41,7 +41,6 @@ class Disparo {
 	}
 }
 
-
 class DisparoPotente inherits Disparo(image= "balas/balaV1-0.png",
 	animador = new Animador(fuente="balas/balaV1-",cantidad=3,extension=".png"),
 	danio= 2

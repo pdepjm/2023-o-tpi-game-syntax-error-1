@@ -45,8 +45,7 @@ object setup {
 			{new Terodactilo(position=self.randomPos(0.1,0.9,0.70,0.45))}
 		]
 		game.onTick(intervalo, "invocar_enemigo", {
-			const enemigo = invoc_enemigos.anyOne().apply()
-			enemigo.spawn()
+			invoc_enemigos.anyOne().apply().spawn()
 		})
 		game.onTick(750, "mover_enemigo",{
 			enemigos.forEach({enemigo => enemigo.moverse()})	
@@ -86,7 +85,6 @@ object setup {
 		enemigos.clear()
 		disparos.clear()
 	}
-	
 	
 	// devuelve una posicion random dentro de los límites establecidos
 	method randomPos(limInicioX, limFinalX, limInicioY, limFinalY) {

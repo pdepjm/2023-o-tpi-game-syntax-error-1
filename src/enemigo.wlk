@@ -49,6 +49,7 @@ class Enemigo {
 		
 		self.evitarLimites()
 	}
+	
 	method seguirJugador(dirX,dirY) {
 		const modulo = (dirX**2 + dirY**2).squareRoot() // para normalizar el vector
 		
@@ -157,6 +158,7 @@ class PajarosVerdes inherits Enemigo(
 		self.position(game.at(self.position().x() + dirX/modulo, self.position().y() + dirY/modulo))
 	}
 }
+
 class Cruz inherits Enemigo(
 	image = "cruz/Cruz-1.png",
 	animador = new Animador(fuente="cruz/Cruz-",cantidad=5,extension=".png"),
