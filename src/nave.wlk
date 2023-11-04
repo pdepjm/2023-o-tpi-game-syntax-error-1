@@ -7,7 +7,7 @@ import finJuego.*
 import setup.*
 
 object nave {
-	var vidas = 2
+	var vidas = 3
 	var property position = game.at(game.width()/2,0)
 	const animador = new Animador(fuente="explosion/Explosion-",cantidad=12,extension=".png")
 	var disparoDisponible = true
@@ -68,7 +68,7 @@ object nave {
 	}
 	
 	method reiniciar(){
-		vidas = vidas + 2
+		vidas = vidas + 3
 		image = "nave1.png"
 		vidaActual.image(vidas)
 		self.position(game.at(game.width()/2,0))
