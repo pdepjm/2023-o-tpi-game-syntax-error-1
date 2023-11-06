@@ -81,6 +81,13 @@ object setup {
 		puntaje.reiniciar()
 	}
 	
+	method setupPuntajeDigital() {
+		//game.addVisual(miles)
+		game.addVisual(centenas)
+		game.addVisual(decenas)
+		game.addVisual(unidades)
+	}
+	
 	method gameClear() {
 		game.clear()
 		enemigos.clear()

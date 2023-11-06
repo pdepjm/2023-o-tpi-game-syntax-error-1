@@ -5,6 +5,7 @@ import bala.*
 import puntaje.*
 import finJuego.*
 import setup.*
+import vidas.*
 
 object nave {
 	var vidas = 2
@@ -30,7 +31,6 @@ object nave {
 	}
   		
   	method disparar(){
-
   		if(disparoDisponible) {
   			disparoDisponible = false
 	  		new Disparo( position = self.position().up(1), direccion = 1).spawn()
@@ -73,21 +73,4 @@ object nave {
 		vidaActual.image(vidas)
 		self.position(game.at(game.width()/2,0))
 	}
-}
-
-object vidaActual {
-	var property image = "corazon/corazon-1.png"
-	const imagenes = [
-		"corazon/corazon-4.png",
-		"corazon/corazon-3.png",
-		"corazon/corazon-2.png",
-		"corazon/corazon-1.png"
-	]
-	const position = game.at(0,12)
-	
-	method position() = position
-	
-	method image(vidas){
-		image = imagenes.get(vidas)
-	} 
 }

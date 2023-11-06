@@ -6,7 +6,10 @@ object puntaje {
 	method text() = puntaje.toString()
 	method textColor() = "00FF00FF"
 	
-	method puntaje(puntajeAgregado){ puntaje = puntaje + puntajeAgregado }
+	method puntaje(puntajeAgregado){
+		if(puntaje + puntajeAgregado >= 1000) puntaje = 999
+		else puntaje = puntaje + puntajeAgregado
+	}
 	
 	method reiniciar(){
 		puntaje = 0
@@ -27,45 +30,40 @@ class PuntajeDigital{
 		"digits/ocho.png",
 		"digits/nueve.png"
 		]
-	
-	 method miles(){
-	 	var position = game.at(7,7)
-	 	var digito = self.miles()
-	 	var image = self.imagenes().get(digito)
-	 	return puntaje.puntaje().div(1000)	
-	 }
-	 method cientos(){
-	 	return (puntaje.puntaje()- self.miles()*1000).div(100)
-	 }
-	 method decenas(){
-	 	return (puntaje.puntaje()%100/10).truncate(0)	
-	 }
-	 method unidades(){
-	 	return puntaje.puntaje()%10
-	 }
-	
 }
-class Miles inherits PuntajeDigital{
-	var property position = game.at(1,game.height()-2)
-	var property digito = self.miles()
-	method image() = self.imagenes().get(digito)
-	method show() = game.addVisual(self)
+/* 
+ 
+object miles inherits PuntajeDigital{
+	method position() {return game.at(5,12)}
+	method image() {
+		const digito = {puntaje.puntaje().div(1000)} 
+		return self.imagenes().get(digito)
+	}
+}
+ 
+*/
+
+object centenas inherits PuntajeDigital{
+	method position() {return game.at(game.width()/2 - 1,12)} 
+	method image(){
+		const digito = (puntaje.puntaje() - (puntaje.puntaje().div(1000))*1000).div(100)
+		return self.imagenes().get(digito)
+	}
+}
+	
+object decenas inherits PuntajeDigital{
+	method position(){return game.at(game.width()/2,12)} 
+	method image() {		
+		const digito = (puntaje.puntaje() % 100/10).truncate(0)
+		return self.imagenes().get(digito)
+	}
+}
+	
+object unidades inherits PuntajeDigital{
+	method position(){return game.at(game.width()/2 + 1,12)} 
+	method image(){
+		const digito = puntaje.puntaje() % 10
+		return self.imagenes().get(digito)	
+	}
 }
 
-class Cientos inherits PuntajeDigital{
-	var property position = game.at(2,game.height()-2)
-	var property digito = self.cientos()
-	method image() = self.imagenes().get(digito)
-	}
-	
-class Decenas inherits PuntajeDigital{
-	var property position = game.at(3,game.height()-2)
-	var property digito = self.decenas()
-	method image() = self.imagenes().get(digito)
-	}
-	
-class Unidades inherits PuntajeDigital{
-	var property position = game.at(4,game.height()-2)
-	var property digito = self.unidades()
-	method image() = self.imagenes().get(digito)
-	}
