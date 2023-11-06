@@ -37,7 +37,6 @@ object pulsarParaIniciar {
 		self.introduccion()
 		keyboard.enter().onPressDo({
 			setup.gameClear()
-			//game.addVisual(puntaje)
 			setup.setupPuntajeDigital()
 			setup.setupJugador()
 			setup.setupEnemigo(3000)

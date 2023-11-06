@@ -6,7 +6,10 @@ object puntaje {
 	method text() = puntaje.toString()
 	method textColor() = "00FF00FF"
 	
-	method puntaje(puntajeAgregado){ puntaje = puntaje + puntajeAgregado }
+	method puntaje(puntajeAgregado){
+		if(puntaje + puntajeAgregado >= 1000) puntaje = 999
+		else puntaje = puntaje + puntajeAgregado
+	}
 	
 	method reiniciar(){
 		puntaje = 0
@@ -27,9 +30,9 @@ class PuntajeDigital{
 		"digits/ocho.png",
 		"digits/nueve.png"
 		]
-	
 }
-
+/* 
+ 
 object miles inherits PuntajeDigital{
 	method position() {return game.at(5,12)}
 	method image() {
@@ -37,27 +40,30 @@ object miles inherits PuntajeDigital{
 		return self.imagenes().get(digito)
 	}
 }
+ 
+*/
 
 object centenas inherits PuntajeDigital{
-	method position() {return game.at(6,12)} 
+	method position() {return game.at(game.width()/2 - 1,12)} 
 	method image(){
-		const digito = (puntaje.puntaje()- (puntaje.puntaje().div(1000))*1000).div(100)
+		const digito = (puntaje.puntaje() - (puntaje.puntaje().div(1000))*1000).div(100)
 		return self.imagenes().get(digito)
-	}}
+	}
+}
 	
 object decenas inherits PuntajeDigital{
-	method position(){return game.at(7,12)} 
+	method position(){return game.at(game.width()/2,12)} 
 	method image() {		
-		const digito = (puntaje.puntaje()%100/10).truncate(0)
+		const digito = (puntaje.puntaje() % 100/10).truncate(0)
 		return self.imagenes().get(digito)
-		}
 	}
+}
 	
 object unidades inherits PuntajeDigital{
-	method position(){return game.at(8,12)} 
+	method position(){return game.at(game.width()/2 + 1,12)} 
 	method image(){
-		const digito = puntaje.puntaje()%10
+		const digito = puntaje.puntaje() % 10
 		return self.imagenes().get(digito)	
-		}
 	}
+}
 
