@@ -28,44 +28,36 @@ class PuntajeDigital{
 		"digits/nueve.png"
 		]
 	
-	 method miles(){
-	 	var position = game.at(7,7)
-	 	var digito = self.miles()
-	 	var image = self.imagenes().get(digito)
-	 	return puntaje.puntaje().div(1000)	
-	 }
-	 method cientos(){
-	 	return (puntaje.puntaje()- self.miles()*1000).div(100)
-	 }
-	 method decenas(){
-	 	return (puntaje.puntaje()%100/10).truncate(0)	
-	 }
-	 method unidades(){
-	 	return puntaje.puntaje()%10
-	 }
-	
-}
-class Miles inherits PuntajeDigital{
-	var property position = game.at(1,game.height()-2)
-	var property digito = self.miles()
-	method image() = self.imagenes().get(digito)
-	method show() = game.addVisual(self)
 }
 
-class Cientos inherits PuntajeDigital{
-	var property position = game.at(2,game.height()-2)
-	var property digito = self.cientos()
-	method image() = self.imagenes().get(digito)
+object miles inherits PuntajeDigital{
+	method position() {return game.at(5,12)}
+	method image() {
+		const digito = {puntaje.puntaje().div(1000)} 
+		return self.imagenes().get(digito)
+	}
+}
+
+object centenas inherits PuntajeDigital{
+	method position() {return game.at(6,12)} 
+	method image(){
+		const digito = (puntaje.puntaje()- (puntaje.puntaje().div(1000))*1000).div(100)
+		return self.imagenes().get(digito)
+	}}
+	
+object decenas inherits PuntajeDigital{
+	method position(){return game.at(7,12)} 
+	method image() {		
+		const digito = (puntaje.puntaje()%100/10).truncate(0)
+		return self.imagenes().get(digito)
+		}
 	}
 	
-class Decenas inherits PuntajeDigital{
-	var property position = game.at(3,game.height()-2)
-	var property digito = self.decenas()
-	method image() = self.imagenes().get(digito)
+object unidades inherits PuntajeDigital{
+	method position(){return game.at(8,12)} 
+	method image(){
+		const digito = puntaje.puntaje()%10
+		return self.imagenes().get(digito)	
+		}
 	}
-	
-class Unidades inherits PuntajeDigital{
-	var property position = game.at(4,game.height()-2)
-	var property digito = self.unidades()
-	method image() = self.imagenes().get(digito)
-	}
+
