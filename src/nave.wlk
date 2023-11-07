@@ -70,7 +70,7 @@ object nave {
 	method reiniciar(){
 		vidas = vidas + 2
 		image = "nave1.png"
-		vidaActual.image(vidas)
+		vidaActual.image(vidas+1)
 		self.position(game.at(game.width()/2,0))
 	}
 }

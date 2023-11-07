@@ -14,7 +14,7 @@ object finJuego {
 	method animar() { animador.animar(self) }
 	 
 	method finDeJuego() {
-		puntaje.position(game.center())
+		//puntaje.position(game.center())
 		game.schedule(3000, {
 			  setup.gameClear()
 			  game.addVisual(self)
