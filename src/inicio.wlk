@@ -8,13 +8,13 @@ import sonido.*
 
 object pulsarParaIniciar { 
 	var property position = game.at(0,0)
-	var property image = "fondoanimado/Fondo/fondo0.gif"
-	const animador = new Animador (fuente="fondoanimado/Fondo/fondo", cantidad =59,extension=".gif")
+	var property image = "fondoanimado/fondoanimado0.gif"
+	const animador = new Animador (fuente="fondoanimado/fondoanimado", cantidad =73,extension=".gif")
 
 	method animar() { animador.animar(self) }
 	
 	method introduccion(){
-		game.onTick(16.6, "animar_introduccion",{animador.animar(self)})
+		game.onTick(60, "animar_introduccion",{animador.animar(self)})
 		
 		setup.setupEnemigo(1000)
 		setup.setupAnimacion()

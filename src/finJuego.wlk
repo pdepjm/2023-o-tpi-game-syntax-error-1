@@ -8,8 +8,8 @@ import sonido.*
 
 object finJuego {
 	var property position = game.at(0,0)
-	var property image = "fondoanimado/FondoGAMEOVER/gameover0.gif"
-	const animador = new Animador (fuente="fondoanimado/FondoGAMEOVER/gameover", cantidad =23,extension=".gif")
+	var property image = "fondofinal/gameover0.gif"
+	const animador = new Animador (fuente="fondofinal/gameover", cantidad =73,extension=".gif")
 	
 	method animar() { animador.animar(self) }
 	 
@@ -18,7 +18,7 @@ object finJuego {
 		game.schedule(3000, {
 			  setup.gameClear()
 			  game.addVisual(self)
-			  game.onTick(150,"animar_final",{ self.animar() })
+			  game.onTick(60,"animar_final",{ self.animar() })
 			  keyboard.r().onPressDo({
 				  game.clear()
 				  setup.reiniciar()

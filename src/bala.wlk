@@ -6,8 +6,8 @@ import animador.*
 
 class Disparo {
 	var property position
-	var property image = "balas/balaV4-0.png"
-	const animador = new Animador (fuente="balas/balaV4-",cantidad=3,extension=".png")
+	var property image = "balas/balav2-0.png"
+	const animador = new Animador (fuente="balas/balav2-",cantidad=3,extension=".png")
 	var direccion
 	const danio = 1
 	
@@ -41,13 +41,13 @@ class Disparo {
 	}
 }
 
-class DisparoPotente inherits Disparo(image= "balas/balaV1-0.png",
-	animador = new Animador(fuente="balas/balaV1-",cantidad=3,extension=".png"),
+class DisparoPotente inherits Disparo(image= "balas/balav1-0.png",
+	animador = new Animador(fuente="balas/balav1-",cantidad=3,extension=".png"),
 	danio= 2
 ) {}
 
-class DisparoDoble inherits Disparo(image= "balas/balaV2-0.png",
-	animador = new Animador(fuente="balas/balaV2-",cantidad=3,extension=".png"),
+class DisparoDoble inherits Disparo(image= "balas/balav4-0.png",
+	animador = new Animador(fuente="balas/balav4-",cantidad=3,extension=".png"),
 	danio= 1
 ) {
 	override method habilidad() {
@@ -58,7 +58,7 @@ class DisparoDoble inherits Disparo(image= "balas/balaV2-0.png",
 }
 
 class DisparoDividido inherits Disparo(image= "balas/balaV3-0.png",
-		animador = new Animador(fuente="balas/balaV3-",cantidad=4,extension=".png")
+		animador = new Animador(fuente="balas/balaV3-",cantidad=5,extension=".png")
 ) {
 	override method habilidad() {
 		new Disparo(position= self.position().left(1), direccion= direccion, animador= animador).spawn()

@@ -100,7 +100,7 @@ class Enemigo {
 
 class DragonRojo inherits Enemigo(
 	image = "dragonrojo/DragonRojo-0.png",
-	animador = new Animador(fuente="dragonrojo/DragonRojo-",cantidad=7,extension=".png"),
+	animador = new Animador(fuente="dragonrojo/DragonRojo-",cantidad=14,extension=".png"),
 	vidas = 1,
 	valorPuntosEnemigo = 10
 ){
